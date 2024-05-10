@@ -1,0 +1,34 @@
+.header-container {
+    position: relative;
+    background-color: #222;
+    max-width: 100%;
+    height: 150px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.header_img {
+    max-width: 100%;
+    height: 350px;
+    background-position: center;
+    background-size: cover;
+}
+
+@media screen and (max-width: 768px) {
+    .header-container {
+        position: relative;
+        min-width: 100%;
+        background-position: center;
+    }
+
+}
+
+@media screen and (max-width: 320px) {
+    .header_img {
+        height: 250px;
+    }
+}

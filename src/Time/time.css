@@ -1,0 +1,83 @@
+.time-container {
+    position: relative;
+    top: 25px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.time-card button {
+    margin-top: 10px;
+    width: 150px;
+    height: 40px;
+}
+
+.time-card-content-header {
+    display: flex;
+}
+
+.time-card-content-header button {
+    height: 100px;
+    margin: 0px 10px;
+    font-size: 2rem;
+    border-radius: var(--radius-2);
+}
+
+.time-card-content-header button:hover {
+    background-color: #222;
+    color: white;
+}
+
+
+.time-card-content-input input {
+    margin: 0 5px;
+    height: 2rem;
+    background-color: whitesmoke;
+    color: black;
+}
+
+.time-card-content-input input::placeholder {
+    text-transform: capitalize;
+    color: black;
+}
+
+.time-card-content-select button {
+    width: 150px;
+    height: 40px;
+    margin: 15px 5px 15px 5px;
+}
+
+.time-card-content-select button:hover {
+    background-color: #222;
+    color: white;
+}
+
+.time-card-content-result p {
+    font-size: 1.5rem;
+}
+
+.time-card-content-result .time {
+    text-align: center;
+}
+
+@media screen and (max-width: 425px) {
+    .time-card-content-input {
+        display: flex;
+    }
+
+    .time-card-content-input input {
+        display: flex;
+        width: 50%;
+        height: 2rem;
+
+    }
+}
