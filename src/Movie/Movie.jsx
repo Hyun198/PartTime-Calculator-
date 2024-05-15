@@ -42,6 +42,7 @@ function Movie() {
                 const posterURL = await getPoster(movie.movieNm, movie.openDt);
                 return { ...movie, posterURL };
             }));
+
             setMovieList(posterMoviesList);
             setLoading(false);
         } catch (error) {

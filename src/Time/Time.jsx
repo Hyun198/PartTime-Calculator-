@@ -46,7 +46,7 @@ function Time() {
         if (!hour || !minute) return;
 
         const inputMoment = moment({ hour, minute });
-        const result = inputMoment.subtract({ hours: 7, minutes: 30 });
+        const result = inputMoment.subtract({ hours: 7, minutes: 20 });
         const formattedResult = result.format("HH:mm");
         setResultTime4(formattedResult);
     };
@@ -67,7 +67,7 @@ function Time() {
         if (!hour || !minute) return;
 
         const inputMoment = moment({ hour, minute });
-        const result = inputMoment.subtract({ hours: 7, minutes: 0 });
+        const result = inputMoment.subtract({ hours: 6, minutes: 50 });
         const formattedResult = result.format("HH:mm");
         setResultTime2(formattedResult);
     };
@@ -86,9 +86,11 @@ function Time() {
         <>
             <div className="time-container">
                 <div className="time-card">
+                    <h2>마감2 변경사항 적용</h2>
                     <div className="time-card-content-header">
                         {!selectedWeek && (
                             <>
+
                                 <button onClick={() => handleWeekSelect('week2')}>주2</button>
                                 <button onClick={() => handleWeekSelect('week4')}>주4</button>
                             </>

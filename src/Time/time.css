@@ -15,6 +15,10 @@
     align-items: center;
 }
 
+.time-card h2 {
+    color: white;
+}
+
 .time-card button {
     margin-top: 10px;
     width: 150px;

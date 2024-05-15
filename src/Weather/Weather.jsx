@@ -17,21 +17,20 @@ function Weather() {
         let url = `https://api.openweathermap.org/data/2.5/forecast?lat=37.617396&lon=126.703532&appid=2d9656e12a5cfa0fd6b7cbebd84d6e23`
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data);
+
 
 
         //실시간 날씨 정보
         const current_url = `https://api.openweathermap.org/data/2.5/weather?lat=37.617396&lon=126.703532&appid=2d9656e12a5cfa0fd6b7cbebd84d6e23`;
         const current_response = await fetch(current_url);
         const currentData = await current_response.json();
-        console.log(currentData);
+
         const currentData_main = currentData.weather[0].main;
         const currentData_feels = ((currentData.main.feels_like) - 273.15).toFixed(1);  //현재 캘빈 절대온도로 되어있음(체감온도)
         const currentRain = currentData.rain
         const currentHumidity = currentData.main.humidity
         const currentWind = currentData.wind.speed
 
-        console.log(currentWind)
         setTodayWeather({ main: currentData_main, feels: currentData_feels, wind: currentWind, humidity: currentHumidity })
 
 
