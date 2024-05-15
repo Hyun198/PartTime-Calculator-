@@ -55,11 +55,11 @@ function Movie() {
 
     const formatNumber = (number) => {
         if (number >= 10000000) {
-            return (number / 10000000).toFixed(1) + "천만";
+            return Math.round(number / 10000000) + "천만";
         } else if (number >= 100000) {
-            return (number / 100000).toFixed(1) + "만";
+            return Math.round(number / 100000) + "만";
         } else if (number >= 10000 && number < 100000) {
-            return (number / 10000).toFixed(1) + "만";
+            return Math.round(number / 10000) + "만";
         }
 
         return number
