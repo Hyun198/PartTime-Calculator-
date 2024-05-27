@@ -26,9 +26,14 @@ function header() {
                     <h2>{year}</h2>
                     <h3>{month}월{day}일</h3>
                 </div>
-                <a href={`http://www.cgv.co.kr/theaters/?areacode=02&theaterCode=0298&date=${today}`}>
-                    <img src={cgv_logo} alt="CGV Logo" className="header_img" />
-                </a>
+                <div className="cgv">
+                    <a href={`http://www.cgv.co.kr/theaters/?areacode=02&theaterCode=0298&date=${today}`}>
+                        <img src={cgv_logo} alt="CGV Logo" className="header_img" />
+                    </a>
+                    <p>김포한강</p>
+                </div>
+
+
             </div>
         </>
 

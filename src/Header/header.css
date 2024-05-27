@@ -1,5 +1,4 @@
 .today {
-
     color: white;
     display: flex;
     flex-direction: column;
@@ -19,8 +18,22 @@
     align-items: center;
 }
 
-.header-container a {
+.header-container .cgv {
     height: 100%;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.header-container .cgv p {
+    position: relative;
+    top: -55px;
+    left: -13px;
+    font-weight: bold;
+    font-size: 1.3rem;
+
 }
 
 .header_img {

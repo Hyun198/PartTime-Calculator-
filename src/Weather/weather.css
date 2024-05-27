@@ -78,7 +78,6 @@ body {
 }
 
 .right-info {
-    float: right;
     position: relative;
     height: 100%;
     padding-top: 25px;
@@ -87,7 +86,7 @@ body {
 .day-info {
     padding: 25px 35px;
     display: flex;
-    justify-content: center;
+
     flex-direction: column;
 }
 
@@ -106,9 +105,8 @@ body {
 
 .days-list {
     display: flex;
-    justify-content: center;
     list-style: none;
-    margin: 10px 35px;
+    gap: 45px;
     box-shadow: 0 5px 15px rgb(0, 0, 0, 0.35);
     border-radius: 10px;
 }
