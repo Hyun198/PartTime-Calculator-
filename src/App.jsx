@@ -11,7 +11,6 @@ function App() {
     <>
       <Header />
       <Movie />
-
       <Time />
       <Weather />
 

@@ -33,12 +33,23 @@
     height: 100px;
     margin: 0px 10px;
     font-size: 2rem;
-    border-radius: var(--radius-2);
+    font-weight: bold;
+    background: #1E90FF;
+    padding: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s, transform 0.3s;
 }
 
-.time-card-content-header button:hover {
-    background-color: #222;
-    color: white;
+.time-card-content-header button:hover,
+.time-card-content-header button:focus,
+.time-card-content-header button:active {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
 }
 
 

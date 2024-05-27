@@ -30,8 +30,8 @@
     padding: var(--spacer);
     background: var(--surface-2);
     border-radius: var(--radius-2);
-    box-shadow: var(--shadow-2);
-    background-color: #464141;
+    box-shadow: 10px 5px 15px black;
+    background-color: #343232;
     margin-top: 1rem;
     color: white;
 }

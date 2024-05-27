@@ -90,9 +90,8 @@ function Time() {
                     <div className="time-card-content-header">
                         {!selectedWeek && (
                             <>
-
-                                <button onClick={() => handleWeekSelect('week2')}>주2</button>
-                                <button onClick={() => handleWeekSelect('week4')}>주4</button>
+                                <button onClick={() => handleWeekSelect('week2')}>Week 2</button>
+                                <button onClick={() => handleWeekSelect('week4')}>Week 4</button>
                             </>
                         )}
                     </div>
@@ -107,14 +106,14 @@ function Time() {
                                 <button onClick={calculateTimeWeek4End2}>마감2</button>
                             </div>
                             <div className="time-card-content-result">
-                                <p>
+                                <p style={{ color: "white" }}>
                                     입력 시간
                                 </p>
-                                <p className="time">{inputTime4.hour}:{inputTime4.minute}</p>
-                                <p>
+                                <p className="time" style={{ color: "white" }}>{inputTime4.hour}:{inputTime4.minute}</p>
+                                <p style={{ color: "white" }}>
                                     출근 시간
                                 </p>
-                                <p className="time">{resultTime4}</p>
+                                <p className="time" style={{ color: "white" }}>{resultTime4}</p>
                             </div>
                             {selectedWeek && (
                                 <button onClick={handleGoBack}>뒤로 가기</button>

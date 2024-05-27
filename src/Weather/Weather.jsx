@@ -70,13 +70,7 @@ function Weather() {
             <div className="left-info">
                 <div className="pic-gradient"></div>
 
-                <div className="today-info">
-                    <h2>{year}</h2>
-                    <h3>{today_month}월{today_date}일</h3>
-                </div>
-
                 <div className='today-weather'>
-                    <i class='bx bxs-sun'></i>
                     <h1 className="weather-temp">
                         {todayWeather.feels} <span>℃</span>
                     </h1>
@@ -104,10 +98,7 @@ function Weather() {
                     <ul className='days-list'>
                         {date.map((dateItem, index) => (
                             <li key={index}>
-                                {index === 0 && <i className='bx bx-cloud'></i>}
-                                {index === 1 && <i className='bx bx-cloud-rain'></i>}
-                                {index === 2 && <i className='bx bx-cloud-snow'></i>}
-                                {index >= 3 && <i className='bx bx-cloud-drizzle'></i>}
+
                                 <span>{dateItem}</span>
                                 <span className='day-temp'>{temps[index]} ℃</span>
                             </li>

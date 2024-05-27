@@ -19,9 +19,19 @@ function header() {
 
     let today = `${year}${month}${day}`
     return (
-        <div className="header-container">
-            <a href={`http://www.cgv.co.kr/theaters/?areacode=02&theaterCode=0298&date=${today}`}><img src={cgv_logo} alt="" className="header_img" /></a>
-        </div>
+        <>
+
+            <div className="header-container">
+                <div className="today">
+                    <h2>{year}</h2>
+                    <h3>{month}월{day}일</h3>
+                </div>
+                <a href={`http://www.cgv.co.kr/theaters/?areacode=02&theaterCode=0298&date=${today}`}>
+                    <img src={cgv_logo} alt="CGV Logo" className="header_img" />
+                </a>
+            </div>
+        </>
+
     )
 }
 
