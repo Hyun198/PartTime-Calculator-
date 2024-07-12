@@ -93,20 +93,6 @@ function Weather() {
                         <span className="title">Wind</span>
                         <span className="value">{todayWeather.wind}km/h</span>
                     </div>
-
-
-                    <ul className='days-list'>
-                        {date.map((dateItem, index) => (
-                            <li key={index}>
-
-                                <span>{dateItem}</span>
-                                <span className='day-temp'>{temps[index]} ℃</span>
-                            </li>
-                        ))}
-                    </ul>
-
-
-
                 </div>
             </div>
 

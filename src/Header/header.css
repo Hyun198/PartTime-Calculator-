@@ -3,10 +3,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #222;
+    background-color: whitesmoke;
     width: 100%;
     height: 150px;
-    color: white;
+    color: black;
+    font-size: 20px;
+    font-weight: 700;
 }
 
 .cgv {

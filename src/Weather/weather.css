@@ -72,10 +72,14 @@
 }
 
 .day-info {
-    padding: 25px 35px;
+    padding: 30px 35px;
     display: flex;
-
     flex-direction: column;
+}
+
+.day-info div {
+    padding: 10px;
+    font-size: 20px;
 }
 
 .day-info div:not(:last-child) {
@@ -91,41 +95,7 @@
     float: right;
 }
 
-.days-list {
-    display: flex;
-    list-style: none;
-    gap: 45px;
-    box-shadow: 0 5px 15px rgb(0, 0, 0, 0.35);
-    border-radius: 10px;
-}
 
-.days-list li {
-    padding: 15px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    transition: all 0.3s ease;
-}
-
-.days-list li .bx {
-    margin-bottom: 5px;
-    font-size: 2rem;
-}
-
-.days-list li:hover {
-    transform: scale(1.1);
-    background-color: #fff;
-    color: #222831;
-    box-shadow: 0 5px 15px rgb(0, 0, 0, 0.35);
-
-}
-
-.days-list li .day-temp {
-    margin-top: 6px;
-    font-weight: 700;
-}
 
 .btn-container {
     padding: 25px 35px;
