@@ -1,13 +1,14 @@
 import React from 'react'
 import { useState } from 'react';
 import moment from 'moment';
-import './time.css'
 
+import './time.css'
 function Time() {
     const [selectedWeek, setSelectedWeek] = useState(null);
+    //주4
     const [inputTime4, setInputTime4] = useState({ hour: "", minute: "" });
     const [resultTime4, setResultTime4] = useState("");
-
+    //주2
     const [inputTime2, setInputTime2] = useState({ hour: "", minute: "" });
     const [resultTime2, setResultTime2] = useState("");
 
@@ -15,62 +16,46 @@ function Time() {
         setSelectedWeek(week);
     }
 
-    const handleTimeChange4 = (event) => {
+    const handleTimeChange = (event, week) => {
         const { id, value } = event.target;
-        setInputTime4((prev) => ({
-            ...prev,
-            [id]: value,
-        }));
-    };
+        if (value.match(/^\d+$/)) {
+            if (week === 'week4') {
+                setInputTime4(prev => ({
+                    ...prev,
+                    [id]: value,
+                }));
+            } else {
+                setInputTime2(prev => ({
+                    ...prev,
+                    [id]: value,
+                }));
+            }
+        }
+    }
 
-    const handleTimeChange2 = (event) => {
-        const { id, value } = event.target;
-        setInputTime2((prev) => ({
-            ...prev,
-            [id]: value,
-        }));
-    };
+    const calculateEndTime = (hour, minute, hourDiff, minuteDiff) => {
+        if (!hour || !minute) return "";
+        const inputMoment = moment({ hour, minute });
+        const result = inputMoment.subtract({ hours: hourDiff, minutes: minuteDiff });
+        return result.format("HH:mm");
+    }
 
     const calculateTimeWeek4End = () => {
-        const { hour, minute } = inputTime4;
-        if (!hour || !minute) return;
-        let inputMoment = moment({ hour, minute });
-        inputMoment.add(10, 'minutes');
-        const result = inputMoment.subtract({ hours: 8, minutes: 0 });
-        const formattedResult = result.format("HH:mm");
-        setResultTime4(formattedResult);
+        setResultTime4(calculateEndTime(inputTime4.hour, inputTime4.minute, 8, 0));
     };
 
     const calculateTimeWeek4End2 = () => {
-        const { hour, minute } = inputTime4;
-        if (!hour || !minute) return;
-
-        const inputMoment = moment({ hour, minute });
-        const result = inputMoment.subtract({ hours: 7, minutes: 20 });
-        const formattedResult = result.format("HH:mm");
-        setResultTime4(formattedResult);
+        setResultTime4(calculateEndTime(inputTime4.hour, inputTime4.minute, 7, 20));
     };
 
     const calculateTimeWeek2End = () => {
-        const { hour, minute } = inputTime2;
-        if (!hour || !minute) return;
-
-        let inputMoment = moment({ hour, minute });
-        inputMoment.add(10, 'minutes');
-        const result = inputMoment.subtract({ hours: 7, minutes: 30 });
-        const formattedResult = result.format("HH:mm");
-        setResultTime2(formattedResult);
+        setResultTime2(calculateEndTime(inputTime2.hour, inputTime2.minute, 7, 30));
     };
 
     const calculateTimeWeek2End2 = () => {
-        const { hour, minute } = inputTime2;
-        if (!hour || !minute) return;
-
-        const inputMoment = moment({ hour, minute });
-        const result = inputMoment.subtract({ hours: 6, minutes: 50 });
-        const formattedResult = result.format("HH:mm");
-        setResultTime2(formattedResult);
+        setResultTime2(calculateEndTime(inputTime2.hour, inputTime2.minute, 6, 50));
     };
+
 
     const handleGoBack = () => {
         setSelectedWeek(null);
@@ -84,71 +69,62 @@ function Time() {
 
     return (
         <>
-            <div className="time-container">
-                <div className="time-card">
-                    <h2>마감2 변경사항 적용</h2>
-                    <div className="time-card-content-header">
-                        {!selectedWeek && (
-                            <>
-                                <button onClick={() => handleWeekSelect('week2')}>Week 2</button>
-                                <button onClick={() => handleWeekSelect('week4')}>Week 4</button>
-                            </>
-                        )}
-                    </div>
-                    {selectedWeek === "week4" && (
-                        <>
-                            <div className='time-card-content-input'>
-                                <input type="text" className='Timeinput' placeholder='hour' id="hour" value={inputTime4.hour} onChange={handleTimeChange4} required />
-                                <input type="text" className='Timeinput' placeholder='minute' id="minute" value={inputTime4.minute} onChange={handleTimeChange4} required />
-                            </div>
-                            <div className='time-card-content-select'>
-                                <button onClick={calculateTimeWeek4End}>마감</button>
-                                <button onClick={calculateTimeWeek4End2}>마감2</button>
-                            </div>
-                            <div className="time-card-content-result">
-                                <p style={{ color: "white" }}>
-                                    입력 시간
-                                </p>
-                                <p className="time" style={{ color: "white" }}>{inputTime4.hour}:{inputTime4.minute}</p>
-                                <p style={{ color: "white" }}>
-                                    출근 시간
-                                </p>
-                                <p className="time" style={{ color: "white" }}>{resultTime4}</p>
-                            </div>
-                            {selectedWeek && (
-                                <button onClick={handleGoBack}>뒤로 가기</button>
-                            )}
-                        </>
-                    )}
-                    {selectedWeek === "week2" && (
-                        <>
-                            <div className='time-card-content-input'>
-                                <input type="text" className='Timeinput' placeholder='hour' id="hour" value={inputTime2.hour} onChange={handleTimeChange2} required />
-                                <input type="text" className='Timeinput' placeholder='minute' id="minute" value={inputTime2.minute} onChange={handleTimeChange2} required />
-                            </div>
-                            <div className='time-card-content-select'>
-                                <button onClick={calculateTimeWeek2End}>마감</button>
-                                <button onClick={calculateTimeWeek2End2}>마감2</button>
-                            </div>
-                            <div className="time-card-content-result">
-                                <p>
-                                    입력 시간
-                                </p>
-                                <p className="time">{inputTime2.hour}:{inputTime2.minute}</p>
-                                <p>
-                                    출근 시간
-                                </p>
-                                <p className="time">{resultTime2}</p>
-                            </div>
-                            {selectedWeek && (
-                                <button onClick={handleGoBack}>뒤로 가기</button>
-                            )}
-                        </>
-                    )}
+
+            {!selectedWeek && (
+                <div className="time-card-content-header" >
+                    <button onClick={() => handleWeekSelect('week2')}>주/2</button>
+                    <button onClick={() => handleWeekSelect('week4')}>주/4</button>
                 </div>
+            )}
+
+            <div className="time-card">
+                {selectedWeek === "week4" && (
+                    <>
+                        <div className='time-card-content-input'>
+                            <input type="text" className='Timeinput' placeholder='hour' id="hour" value={inputTime4.hour} onChange={(e) => handleTimeChange(e, 'week4')} required />
+                            <input type="text" className='Timeinput' placeholder='minute' id="minute" value={inputTime4.minute} onChange={(e) => handleTimeChange(e, 'week4')} required />
+                        </div>
+                        <div className='time-card-content-select'>
+                            <button onClick={calculateTimeWeek4End}>마감</button>
+                            <button onClick={calculateTimeWeek4End2}>마감2</button>
+                        </div>
+                        <div className="time-card-content-result">
+                            <p style={{ color: "black" }}>입력 시간</p>
+                            <p className="time" style={{ color: "black" }}>{inputTime4.hour}:{inputTime4.minute}</p>
+                            <p style={{ color: "black" }}>출근 시간</p>
+                            <p className="time" style={{ color: "black" }}>{resultTime4}</p>
+                        </div>
+                        {selectedWeek && (
+                            <div className="goback-btn" onClick={handleGoBack}>뒤로 가기</div>
+                        )}
+                    </>
+                )}
+                {selectedWeek === "week2" && (
+                    <>
+                        <div className='time-card-content-input'>
+                            <input type="text" className='Timeinput' placeholder='hour' id="hour" value={inputTime2.hour} onChange={(e) => handleTimeChange(e, 'week2')} required />
+                            <input type="text" className='Timeinput' placeholder='minute' id="minute" value={inputTime2.minute} onChange={(e) => handleTimeChange(e, 'week2')} required />
+                        </div>
+                        <div className='time-card-content-select'>
+                            <button onClick={calculateTimeWeek2End}>마감</button>
+                            <button onClick={calculateTimeWeek2End2}>마감2</button>
+                        </div>
+                        <div className="time-card-content-result">
+                            <p>
+                                입력 시간
+                            </p>
+                            <p className="time">{inputTime2.hour}:{inputTime2.minute}</p>
+                            <p>
+                                출근 시간
+                            </p>
+                            <p className="time">{resultTime2}</p>
+                        </div>
+                        {selectedWeek && (
+                            <button onClick={handleGoBack}>뒤로 가기</button>
+                        )}
+                    </>
+                )}
             </div>
-
-
         </>
     )
 }

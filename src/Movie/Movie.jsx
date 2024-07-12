@@ -1,6 +1,6 @@
 import React, { useEffect, useState, CSSProperties } from 'react'
 import MoonLoader from "react-spinners/MoonLoader";
-import './Movie.css';
+import './Movie.css'
 
 const override: CSSProperties = {
     display: "block",
@@ -32,7 +32,6 @@ function Movie() {
             month = month < 10 ? '0' + month : month;
             day = day < 10 ? '0' + day : day;
             let targetDt = `${year}${month}${day}`;
-            console.log(targetDt);
             const api_key = `924e226f51dd500f8092112eab54833f`;
             const url = `https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${api_key}&targetDt=${targetDt}`;
             const response = await fetch(url);
@@ -90,8 +89,8 @@ function Movie() {
     }
 
     return (
-        <div className="movies-board snaps-inline">
 
+        <div className="movies-board snaps-inline">
             {loading && (
                 <MoonLoader
                     color={color}
@@ -103,20 +102,20 @@ function Movie() {
                 />
             )}
             {!loading && (movieList.length === 0 ? (
-                <div style={{ color: "white", fontSize: '20px' }}>Error 영화 목록이 없습니다.</div>
+                <div style={{ color: "black", fontSize: '20px' }}>Error 영화 목록이 없습니다.</div>
             ) : (
+
                 movieList.map((movie) => (
-                    <div className="movies" key={movie.movieCd}>
+                    <div className="movie-list" key={movie.movieCd}>
                         <div className="movie">
                             <img src={movie.posterURL} alt={movie.movieNm} />
-                            <div className="movie-title">
-                                {movie.movieNm}
-                            </div>
+                            <p className="rank">{movie.rank}</p>
                             <div className="movie-desc">
-                                <p className="rank">{movie.rank}</p>
-                                {/* <p className="movie-start">영화 개봉일: {movie.openDt}</p> */}
-                                {/* <p className="movie-audCnt">오늘 관객 수: {formatNumber(movie.audiCnt)} 명</p> */}
-                                <p className="movie-audAll">{formatNumber(movie.audiAcc)} 명</p>
+                                <div className="movie-title">
+                                    {movie.movieNm}
+                                </div>
+                                <p className="movie-audCnt">today: {movie.audiCnt} 명</p>
+                                <p className="movie-audAll">{movie.audiAcc} 명</p>
                             </div>
                         </div>
                     </div>

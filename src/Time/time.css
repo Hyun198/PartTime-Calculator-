@@ -27,6 +27,8 @@
 
 .time-card-content-header {
     display: flex;
+    justify-content: center;
+    margin-top: 15px;
 }
 
 .time-card-content-header button {
@@ -34,11 +36,12 @@
     margin: 0px 10px;
     font-size: 2rem;
     font-weight: bold;
-    background: #1E90FF;
+    background: rgb(220, 137, 137);
     padding: 20px;
     text-align: center;
     text-transform: uppercase;
     color: #fff;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -52,27 +55,39 @@
     transform: scale(1.1);
 }
 
+.time-card-content-input {
+    margin-top: 15px;
+}
 
 .time-card-content-input input {
     margin: 0 5px;
     height: 2rem;
     background-color: whitesmoke;
+    border: none;
     color: black;
 }
 
 .time-card-content-input input::placeholder {
     text-transform: capitalize;
     color: black;
+    text-align: center;
 }
 
 .time-card-content-select button {
     width: 150px;
     height: 40px;
     margin: 15px 5px 15px 5px;
+    background-color: rgb(220, 137, 137);
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 800;
+    cursor: pointer;
 }
 
 .time-card-content-select button:hover {
-    background-color: #222;
+    background-color: hsl(0, 54%, 60%);
     color: white;
 }
 
@@ -82,6 +97,16 @@
 
 .time-card-content-result .time {
     text-align: center;
+}
+
+.goback-btn {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 800;
+    padding: 10px;
+    border-radius: 10%;
+    background-color: rgb(220, 137, 137);
+    cursor: pointer;
 }
 
 @media screen and (max-width: 425px) {

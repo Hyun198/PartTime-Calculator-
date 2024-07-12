@@ -1,43 +1,45 @@
 import React from 'react'
+import { Container, Row, Col } from 'react-bootstrap';
 import cgv_logo from "../assets/cgv.png";
 import './header.css'
-function header() {
+
+
+export const daytime = () => {
     let date = new Date();
     let year = date.getFullYear();
-    let month = date.getMonth() + 1;
-    if (month < 10) {
-        month = String(month).padStart(2, "0");
-    } else {
-        month = String(month);
-    }
-    let day = date.getDate();
-    if (day < 10) {
-        day = String(day).padStart(2, "0");
-    } else {
-        day = String(day);
-    }
+    let month = (date.getMonth() + 1).toString().padStart(2, "0");
+    let day = date.getDate().toString().padStart(2, "0");
 
-    let today = `${year}${month}${day}`
+    return { year, month, day };
+}
+
+function Header() {
+
+    const today = daytime();
+
+    let todaydate = `${today.year}${today.month}${today.day}`
+
     return (
-        <>
+        <div >
+            <Container >
+                <Row className="header-container" >
+                    <Col className="today" >
+                        <h2>{today.year}</h2>
+                        <h3>{today.month}월{today.day}일</h3>
+                    </Col>
 
-            <div className="header-container">
-                <div className="today">
-                    <h2>{year}</h2>
-                    <h3>{month}월{day}일</h3>
-                </div>
-                <div className="cgv">
-                    <a href={`http://www.cgv.co.kr/theaters/?areacode=02&theaterCode=0298&date=${today}`}>
-                        <img src={cgv_logo} alt="CGV Logo" className="header_img" />
-                    </a>
-                    <p>김포한강</p>
-                </div>
+                    <Col className="cgv" >
+                        <a href={`http://www.cgv.co.kr/theaters/?areacode=02&theaterCode=0298&date=${todaydate}`} style={{ width: 150 }}>
+                            <img src={cgv_logo} alt="CGV Logo" className="header_img" />
+                        </a>
+                    </Col>
 
 
-            </div>
-        </>
-
+                </Row>
+            </Container>
+        </div>
     )
 }
 
-export default header
+
+export default Header
