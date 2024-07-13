@@ -7,6 +7,14 @@
     align-items: center;
 }
 
+.time-bg {
+    margin: auto;
+    background-color: #ddd;
+    width: 100%;
+    height:
+}
+
+
 .time-card {
     width: 100%;
     display: flex;
@@ -107,6 +115,7 @@
     border-radius: 10%;
     background-color: rgb(220, 137, 137);
     cursor: pointer;
+    margin-top: 30px;
 }
 
 @media screen and (max-width: 425px) {
