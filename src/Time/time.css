@@ -44,7 +44,7 @@
     margin: 0px 10px;
     font-size: 2rem;
     font-weight: bold;
-    background: rgb(220, 137, 137);
+    background: #71ace8;
     padding: 20px;
     text-align: center;
     text-transform: uppercase;
@@ -85,7 +85,7 @@
     width: 150px;
     height: 40px;
     margin: 15px 5px 15px 5px;
-    background-color: rgb(220, 137, 137);
+    background-color: #71ace8;
     border: none;
     outline: none;
     color: white;
@@ -113,7 +113,7 @@
     font-weight: 800;
     padding: 10px;
     border-radius: 10%;
-    background-color: rgb(220, 137, 137);
+    background-color: #71ace8;
     cursor: pointer;
     margin-top: 30px;
 }

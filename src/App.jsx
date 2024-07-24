@@ -3,6 +3,7 @@ import Time from './Time/Time'
 import Movie from './Movie/Movie'
 import Weather from './Weather/Weather'
 import './App.css';
+import Bus from './Bus/Bus';
 
 //버스노선 api 
 
@@ -14,7 +15,9 @@ function App() {
       <Header />
       <Movie />
       <Time />
-      <Weather />
+
+      <Bus />
+
     </>
   );
 }

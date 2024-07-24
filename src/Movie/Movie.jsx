@@ -19,22 +19,22 @@ function Movie() {
     const fetchMovies = async () => {
         try {
             const today = new Date();
-            const currentDay = today.getDay();
-            //일요일 설정
-            today.setDate(today.getDate() - currentDay);
+            //날짜는 전날로 설정
+
             let year = today.getFullYear();
             let month = today.getMonth() + 1;
             let day = today.getDate();
 
             month = month < 10 ? "0" + month : month;
             day = day < 10 ? "0" + day : day;
-            let targetDt = `${year}${month}${day}`;
+            let targetDt = `${year}${month}${day - 1}`;
 
-            const api_key = `924e226f51dd500f8092112eab54833f`;
+
+            const api_key = process.env.REACT_APP_KOBIS_API_KEY
             const url = `https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${api_key}&targetDt=${targetDt}`;
             const response = await fetch(url);
             const data = await response.json();
-            console.log(data);
+
             const BoxOfficeList = data.boxOfficeResult.dailyBoxOfficeList;
             if (!BoxOfficeList) {
                 throw new Error("Invalid API resposne");
@@ -68,12 +68,11 @@ function Movie() {
 
     const getPoster = async (title, openDt) => {
         try {
-            const KMDB_API_KEY = "Q0YF214E5O2XQR10ZF51";
+            const KMDB_API_KEY = process.env.REACT_APP_KOREA_FILM_KEY
             const encodedTitle = encodeURIComponent(title.replace(/!!/g, " "));
             const encodedOpenDt = encodeURIComponent(openDt);
             const url = `http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&detail=Y&listCount=30&query=${encodedTitle}&releaseDts=${encodedOpenDt}&ServiceKey=${KMDB_API_KEY}`;
-            /*  console.log(`Fetching poster for title: ${title}`);
-                   console.log(`URL: ${url}`); */
+
             const response = await fetch(url);
             const data = await response.json();
             /* console.log(data); */

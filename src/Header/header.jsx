@@ -20,7 +20,7 @@ function Header() {
     let todaydate = `${today.year}${today.month}${today.day}`
 
     return (
-        <div >
+        <div className='headline'>
             <Container >
                 <Row className="header-container" >
                     <Col className="today" >
