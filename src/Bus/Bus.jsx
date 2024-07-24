@@ -32,6 +32,13 @@ function Bus() {
         }
     };
 
+    const handleKeyPress = (e) => {
+        if (e.key === "Enter") {
+            handleSearch();
+        }
+
+    }
+
 
     //버스 노선정보 조회
     const fetchBusCode = async (keyword) => {
@@ -98,6 +105,7 @@ function Bus() {
                     className="search-box"
                     placeholder="bus..."
                     ref={keywordInput}
+                    onKeyPress={handleKeyPress}
                 />
                 <button onClick={handleSearch}><FontAwesomeIcon icon={faMagnifyingGlass} size="2x" /></button>
             </div>
@@ -220,7 +228,7 @@ function Bus() {
 
                                     </div>
                                 ) : (
-                                    <p>Loading arrivals...</p>
+                                    <p style={{ fontSize: "30px", textAlign: "center" }}>도착 버스가 없음 😢</p>
                                 )}
                             </div>
                         </Col>
