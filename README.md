@@ -27,6 +27,17 @@
 
    `npm start`
 
+5. 사용한 API
+
+   kofic open api 'https://www.kobis.or.kr/kobisopenapi/homepg/main/main.do'
+   KMDB api 'https://www.kmdb.or.kr/main
+
+   +---추가사항
+   경기도 버스 노선 API 'https://www.data.go.kr/'
+
+   +---변경사항
+   OpenWeatherAPI 를 이용한 weather component 메인 페이지에서 사용 중단 (사용자들이 별로 필요한 기능이랑 생각하지 않아서 수정)
+
 ## 현재 배포된 사이트
 
 [CGV Part-time Job](https://cgvparttime.netlify.app/)
