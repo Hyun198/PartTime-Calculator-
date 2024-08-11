@@ -18,11 +18,17 @@ React-Bootstrap을 이용해 반응형 UI구현
 
 ## 사용한 API
 
-<img src="./relative//kofic.jpg" width="200" height="200" />
-[KOFIC Open API](https://www.kobis.or.kr/kobisopenapi/homepg/main/main.do)
+<div>
+  <img src="./relative/kofic.jpg" width="200" height="200" />
+  <br>
+  <a href="https://www.kobis.or.kr/kobisopenapi/homepg/main/main.do">KOFIC Open API</a>
+</div>
 
-<img src="./relative//kmdb.jpg" width="200" height="200" />
-[KMDB API](https://www.kmdb.or.kr/main)
+<div>
+  <img src="./relative/kmdb.jpg" width="200" height="200" />
+  <br>
+  <a href="https://www.kmdb.or.kr/main">KMDB API</a>
+</div>
 
 [경기도 버스 노선 API](https://www.data.go.kr/)
 메인 페이지에 버스 노선 정보, 정류장 도착정보 적용
