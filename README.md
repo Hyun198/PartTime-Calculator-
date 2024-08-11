@@ -7,6 +7,10 @@
 알바생들의 출근시간 계산을 자동화시켜 지각률을 낮추고, 매니저들의
 스케줄 작성에 도움을 주기 위해 개발하게 됐습니다.
 
+## 사용 Stacks
+
+React, html, css , javascript, react-bootstrap
+
 ## 아키텍쳐
 
 ![아키텍쳐 이미지](./relative/system.png)
@@ -33,7 +37,7 @@
 
 5. 사용한 API
 
-   kofic open api 'https://www.kobis.or.kr/kobisopenapi/homepg/main/main.do'
+   ![kofic 이미지](./relative/kofic.png)kofic open api 'https://www.kobis.or.kr/kobisopenapi/homepg/main/main.do'
 
    KMDB api 'https://www.kmdb.or.kr/main
 
