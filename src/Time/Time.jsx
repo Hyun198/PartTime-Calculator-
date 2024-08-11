@@ -41,19 +41,19 @@ function Time() {
     }
 
     const calculateTimeWeek4End = () => {
-        setResultTime4(calculateEndTime(inputTime4.hour, inputTime4.minute, 8, 0));
+        setResultTime4(calculateEndTime(inputTime4.hour, inputTime4.minute, 7, 50)); //영화시작 시간 +10 - 8시간
     };
 
     const calculateTimeWeek4End2 = () => {
-        setResultTime4(calculateEndTime(inputTime4.hour, inputTime4.minute, 7, 20));
+        setResultTime4(calculateEndTime(inputTime4.hour, inputTime4.minute, 7, 20)); //영화시간 + 40 - 8시간 
     };
 
     const calculateTimeWeek2End = () => {
-        setResultTime2(calculateEndTime(inputTime2.hour, inputTime2.minute, 7, 30));
+        setResultTime2(calculateEndTime(inputTime2.hour, inputTime2.minute, 7, 20)); //영화시작 시간+10 -7시간30분
     };
 
     const calculateTimeWeek2End2 = () => {
-        setResultTime2(calculateEndTime(inputTime2.hour, inputTime2.minute, 6, 50));
+        setResultTime2(calculateEndTime(inputTime2.hour, inputTime2.minute, 6, 50)); //영화시간 + 40 - 7시간 30분
     };
 
 
