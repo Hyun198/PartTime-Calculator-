@@ -9,7 +9,7 @@
 
 ## 사용 스킬
 
-React을 이용한 웹사이트 구현, HTML5, CSS3, JavaScript 계산기, api호출 구현
+React을 이용한 웹사이트 구현, HTML5, CSS3, JavaScript 계산기<br>api호출 구현
 React-Bootstrap을 이용해 반응형 UI구현
 
 ## 아키텍쳐
@@ -28,6 +28,7 @@ React-Bootstrap을 이용해 반응형 UI구현
   <img src="./relative/kmdb.jpg" width="200" height="200" />
   <br>
   <a href="https://www.kmdb.or.kr/main">KMDB API</a>
+  <br>
 </div>
 
 [경기도 버스 노선 API](https://www.data.go.kr/)
