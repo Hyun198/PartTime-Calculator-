@@ -18,7 +18,8 @@ React-Bootstrap을 이용해 반응형 UI구현
 
 ## 사용한 API
 
-![kofic 이미지](./relative/kofic.jpg)kofic open api 'https://www.kobis.or.kr/kobisopenapi/homepg/main/main.do'
+ <img src="./relative//kofic.jpg" width="200" height="200" />
+ kofic open api 'https://www.kobis.or.kr/kobisopenapi/homepg/main/main.do'
 
 ![kmdb 이미지](./relative/kmdb.jpg)KMDB api 'https://www.kmdb.or.kr/main
 
