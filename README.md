@@ -7,48 +7,25 @@
 알바생들의 출근시간 계산을 자동화시켜 지각률을 낮추고, 매니저들의
 스케줄 작성에 도움을 주기 위해 개발하게 됐습니다.
 
-## 사용 Stacks
+## 사용 스킬
 
-React, html, css , javascript, react-bootstrap
+React을 이용한 웹사이트 구현, HTML5, CSS3, JavaScript 계산기, api호출 구현
+React-Bootstrap을 이용해 반응형 UI구현
 
 ## 아키텍쳐
 
 ![아키텍쳐 이미지](./relative/system.png)
 
-## 실행 방법
+## 사용한 API
 
-1. 이 저장소를 클론합니다:
+![kofic 이미지](./relative/kofic.jpg)kofic open api 'https://www.kobis.or.kr/kobisopenapi/homepg/main/main.do'
 
-   ```bash
-   git clone https://github.com/Hyun198/portfolio_partTime.git
-   ```
+![kmdb 이미지](./relative/kmdb.jpg)KMDB api 'https://www.kmdb.or.kr/main
 
-2. 프로젝트 폴더로 이동합니다:
+경기도 버스 노선 API 'https://www.data.go.kr/'  
+ 메인 페이지에 버스 노선 정보, 정류장 도착정보 적용
 
-3. 필요한 패키지를 설치합니다:
-
-   ```bash
-   npm install
-   ```
-
-4. 웹을 실행시킵니다:
-
-   `npm start`
-
-5. 사용한 API
-
-   ![kofic 이미지](./relative/kofic.png)kofic open api 'https://www.kobis.or.kr/kobisopenapi/homepg/main/main.do'
-
-   KMDB api 'https://www.kmdb.or.kr/main
-
-   +---------------------추가사항
-
-   경기도 버스 노선 API 'https://www.data.go.kr/'  
-   메인 페이지에 버스 노선 정보, 정류장 도착정보 적용
-
-   +---------------------변경사항
-
-   OpenWeatherAPI 를 이용한 weather component 메인 페이지에서 사용 중단 (사용자들이 별로 필요한 기능이랑 생각하지 않아서 수정)
+OpenWeatherAPI 를 이용한 weather component 메인 페이지에서 사용 중단 (사용자들이 별로 필요한 기능이랑 생각하지 않아서 수정)
 
 ## Project 결과
 
