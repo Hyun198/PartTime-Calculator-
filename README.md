@@ -28,9 +28,9 @@ React-Bootstrap을 이용해 반응형 UI구현
   <img src="./relative/kmdb.jpg" width="200" height="200" />
   <br>
   <a href="https://www.kmdb.or.kr/main">KMDB API</a>
-  <br>
-</div>
 
+</div>
+<br>
 [경기도 버스 노선 API](https://www.data.go.kr/)
 메인 페이지에 버스 노선 정보, 정류장 도착정보 적용
 
