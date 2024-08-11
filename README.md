@@ -18,13 +18,14 @@ React-Bootstrap을 이용해 반응형 UI구현
 
 ## 사용한 API
 
- <img src="./relative//kofic.jpg" width="200" height="200" />
- kofic open api 'https://www.kobis.or.kr/kobisopenapi/homepg/main/main.do'
+    <img src="./relative//kofic.jpg" width="200" height="200" />
+    [kofic open api]('https://www.kobis.or.kr/kobisopenapi/homepg/main/main.do')
 
-![kmdb 이미지](./relative/kmdb.jpg)KMDB api 'https://www.kmdb.or.kr/main
+    <img src="./relative//kmdb.jpg" width="200" height="200" />
+    [KMDB api] ('https://www.kmdb.or.kr/main)
 
-경기도 버스 노선 API 'https://www.data.go.kr/'  
- 메인 페이지에 버스 노선 정보, 정류장 도착정보 적용
+    [경기도 버스 노선 API]('https://www.data.go.kr/')
+    메인 페이지에 버스 노선 정보, 정류장 도착정보 적용
 
 OpenWeatherAPI 를 이용한 weather component 메인 페이지에서 사용 중단 (사용자들이 별로 필요한 기능이랑 생각하지 않아서 수정)
 
