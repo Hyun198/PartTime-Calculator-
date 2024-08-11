@@ -31,9 +31,11 @@ React-Bootstrap을 이용해 반응형 UI구현
 
 </div>
 <br>
-[경기도 버스 노선 API](https://www.data.go.kr/)
-메인 페이지에 버스 노선 정보, 정류장 도착정보 적용
 
+<a href="https://www.data.go.kr/">경기도 버스 노선 API</a>
+<br>
+메인 페이지에 버스 노선 정보, 정류장 도착정보 적용
+<br>
 OpenWeatherAPI 를 이용한 weather component 메인 페이지에서 사용 중단 (사용자들이 별로 필요한 기능이랑 생각하지 않아서 수정)
 
 ## Project 결과
