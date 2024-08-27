@@ -1,18 +1,19 @@
 .movies-board {
     display: flex;
     width: 80%;
+    height: auto;
     flex-direction: column;
-    justify-content: center;
+    margin: auto;
     padding: 20px 0px;
+    box-shadow: 0px 0px 10px #000;
 }
 
 .movie-list {
     display: flex;
-    justify-content: center;
-    margin: auto;
+    justify-content: space-between;
 }
 
-.movie-list .movie img {
+.movie-list img {
     width: 300px;
     height: auto;
     object-fit: cover;
@@ -22,5 +23,52 @@
 
 .movie-list .movie {
     display: flex;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 0.3px solid #000;
+}
+
+.movie-list .movie .rank {
+    font-size: 50px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.movie-list .movie .movie-desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.movie-list .movie .movie-desc .movie-title {
+    position: relative;
+    display: flex;
     gap: 10px;
+    text-align: left;
+    justify-content: flex-start;
+}
+
+.movie-list .movie .movie-desc .movie-title .movie-adults .watch-rank {
+    width: 30px;
+    height: 30px;
+}
+
+
+.movie-list .movie .movie-desc .movie-audCnt {
+    font-size: 20px;
+
+}
+
+.movie-list .movie .movie-desc .movie-audAll {
+    font-size: 20px;
+}
+
+.movie-list .movie .movie-desc .movie-actors {
+    display: flex;
+    gap: 10px;
+}
+
+.movie-list .movie .movie-desc .movie-actors p {
+    font-size: 18px;
+    font-weight: 500;
 }

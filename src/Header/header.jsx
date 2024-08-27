@@ -27,6 +27,7 @@ function Header() {
         navigate('/');
     }
     const menu = [
+        "home",
         "bus",
         "boxoffice",
         "weather",
@@ -35,7 +36,13 @@ function Header() {
 
 
     const handleGotoPage = (param) => {
-        navigate(`/${param}`)
+        if (param === "home") {
+            navigate("/")
+        } else {
+            navigate(`/${param}`)
+        }
+
+
     }
 
     const toggleNav = () => {
