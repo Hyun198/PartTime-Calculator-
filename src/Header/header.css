@@ -63,6 +63,7 @@
 
 .cgv img {
     width: 200px;
+    height: 150px;
     object-position: center;
 }
 
@@ -81,7 +82,8 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
     transition: left 0.3s ease;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
     z-index: 1000;
@@ -95,6 +97,7 @@
 
 .nav-bar ul {
     list-style: none;
+    text-transform: capitalize;
     padding: 10px;
 }
 
@@ -106,6 +109,7 @@
 
 .nav-bar ul li:hover {
     background-color: #f0f0f0;
+    backdrop-filter: blur(5px);
 }
 
 .nav-bar .faX {
@@ -117,13 +121,17 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 500px) {
+    .header-container {
+        width: 100%;
+    }
+
     .hamburger-menu {
         display: flex;
         position: relative;
-        font-size: 2.5rem;
+        font-size: 2rem;
         top: 25%;
-        left: 20px;
+        right: 10px;
         /* 데스크탑 모드에서 햄버거 아이콘을 숨김 */
         cursor: pointer;
     }
@@ -131,5 +139,22 @@
     .menu-bars {
         display: none;
         /* 모바일 모드에서 기본 메뉴는 숨김 */
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .hamburger-menu {
+        display: flex;
+        position: relative;
+        font-size: 1.5rem;
+        top: 25%;
+        right: 10px;
+        /* 데스크탑 모드에서 햄버거 아이콘을 숨김 */
+        cursor: pointer;
+    }
+
+    .cgv img {
+        width: 150px;
+        object-position: center;
     }
 }

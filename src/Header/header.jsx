@@ -64,9 +64,9 @@ function Header() {
                 </a>
             </div>
 
-            <div className="home-btn">
+            {/* <div className="home-btn">
                 <FontAwesomeIcon icon={faHouse} onClick={GotoHome} />
-            </div>
+            </div> */}
 
             <div className="menu-bars">
                 <ul>
