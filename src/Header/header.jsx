@@ -24,7 +24,7 @@ function Header() {
     let todaydate = `${today.year}${today.month}${today.day}`
 
     const GotoHome = () => {
-        navigate('/home');
+        navigate('/');
     }
     const menu = [
         "bus",

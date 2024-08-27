@@ -13,7 +13,7 @@ function App() {
       <Header />
 
       <Routes>
-        <Route path="/home" element={<Time />} />
+        <Route path="/" element={<Time />} />
         <Route path="/boxoffice" element={<Movie />} />
         <Route path="/bus" element={<Bus />} />
       </Routes>

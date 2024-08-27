@@ -3,6 +3,7 @@
     width: 80%;
     flex-direction: column;
     justify-content: center;
+    padding: 20px 0px;
 }
 
 .movie-list {
