@@ -1,88 +1,135 @@
-.headline {
-    width: 100%;
-}
-
-
 .header-container {
     position: relative;
     display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 100%;
-    height: 150px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 80%;
+    height: auto;
     color: black;
     font-size: 20px;
     font-weight: 700;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #000;
+    margin: auto;
+    align-items: center;
+
 }
 
-.today h2,
-.today h3 {
+
+.header-container .menu-bars {
+    flex-basis: 100%;
+    margin-top: 10px;
+}
+
+
+.header-container .menu-bars ul {
+    display: flex;
+    font-weight: 500;
+    justify-content: center;
+    list-style: none;
+    gap: 20px;
+}
+
+.header-container .menu-bars ul li {
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.header-container .menu-bars ul li:hover {
+    color: #71ace8;
+}
+
+.header-container .today h2 {
+    font-size: 2.5rem;
     font-weight: 700;
 }
 
+.header-container .today span {
+    font-size: 1.5rem;
+    background: transparent;
+}
 
+.header-container .home-btn {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 2rem;
+    cursor: pointer;
+}
 
+.header-container .home-btn:hover {
+    color: #71ace8;
+}
 
 .cgv img {
     width: 200px;
     object-position: center;
 }
 
-.tema-btn {
-    position: absolute;
-    right: 4px;
-    border-radius: 20px;
-    height: 40px;
-    width: 75px;
-    background-color: black;
+/* side-bar 구현*/
+
+.hamburger-menu {
+    display: none;
+
+}
+
+.nav-bar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.3s ease;
-}
-
-.tema-btn span {
-    height: 25px;
-    width: 25px;
+    flex-direction: column;
     background-color: white;
-    border-radius: 50%;
-    position: relative;
-    text-align: center;
-    margin: 0 5px;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+
 }
 
-span:nth-child(2) {
-    position: relative;
-    background-color: black;
+.nav-bar.open {
+    left: 0;
+    /* 열렸을 때 화면 왼쪽에 맞춰짐 */
 }
 
-span:nth-child(1) i {
-    font-size: 22px;
-    color: white;
+.nav-bar ul {
+    list-style: none;
+    padding: 10px;
 }
 
-span:nth-child(2) i {
-    font-size: 22px;
-    color: white;
-}
-
-span:hover {
+.nav-bar ul li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ccc;
     cursor: pointer;
-
 }
 
-span:nth-child(1):hover {
-    transition: 0.5s ease-in-out;
+.nav-bar ul li:hover {
+    background-color: #f0f0f0;
 }
 
-span:nth-child(2):hover {
-    transition: 0.5s ease-in-out;
+.nav-bar .faX {
+    position: relative;
+    top: 10px;
+    left: -100px;
+    padding: 10px;
+    font-size: 2rem;
+    cursor: pointer;
 }
 
-@media only screen and (max-width: 500px) {
-    .tema-btn {
-        scale: 0.8;
-        bottom: 5px;
+@media screen and (max-width: 900px) {
+    .hamburger-menu {
+        display: flex;
+        position: relative;
+        font-size: 2.5rem;
+        top: 25%;
+        left: 20px;
+        /* 데스크탑 모드에서 햄버거 아이콘을 숨김 */
+        cursor: pointer;
+    }
+
+    .menu-bars {
+        display: none;
+        /* 모바일 모드에서 기본 메뉴는 숨김 */
     }
 }

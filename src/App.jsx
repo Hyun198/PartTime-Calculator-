@@ -1,23 +1,22 @@
 import Header from './Header/header'
 import Time from './Time/Time'
 import Movie from './Movie/Movie'
-import Weather from './Weather/Weather'
+
 import './App.css';
 import Bus from './Bus/Bus';
-
-//버스노선 api 
-
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
 
   return (
     <>
       <Header />
-      <Movie />
-      <Time />
 
-      <Bus />
-
+      <Routes>
+        <Route path="/home" element={<Time />} />
+        <Route path="/boxoffice" element={<Movie />} />
+        <Route path="/bus" element={<Bus />} />
+      </Routes>
     </>
   );
 }

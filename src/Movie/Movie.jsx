@@ -34,7 +34,6 @@ function Movie() {
             const url = `https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${api_key}&targetDt=${targetDt}`;
             const response = await fetch(url);
             const data = await response.json();
-
             const BoxOfficeList = data.boxOfficeResult.dailyBoxOfficeList;
             if (!BoxOfficeList) {
                 throw new Error("Invalid API resposne");
@@ -45,7 +44,7 @@ function Movie() {
                     return { ...movie, posterURL };
                 })
             );
-
+            console.log(posterMoviesList);
             setMovieList(posterMoviesList);
             setLoading(false);
         } catch (error) {
@@ -86,7 +85,7 @@ function Movie() {
     };
 
     return (
-        <div className="movies-board snaps-inline">
+        <div className="movies-board">
             {loading && (
                 <MoonLoader
                     color={color}
@@ -101,7 +100,7 @@ function Movie() {
             {!loading &&
                 (movieList.length === 0 ? (
                     <div style={{ color: "black", fontSize: "20px" }}>
-                        Error 영화 목록이 없습니다.
+                        영화 목록 불러오는 중...
                     </div>
                 ) : (
                     movieList.map((movie) => (
