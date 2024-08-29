@@ -11,17 +11,6 @@ Maybe you can mention me or this repo in the acknowledgements too
   <img src="/relative/cgvapp.png" alt="logo" width="200" height="auto" />
   <h1>Part time Calculator</h1>
 
-<!-- Badges -->
-<p>
-  <a href="https://github.com/Hyun198/awesome-readme-template/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/Hyun198/PartTime-Calculator-
-" alt="contributors" />
-  </a>
-  <a href="">
-    <img src="https://img.shields.io/github/last-commit/Louis3797/awesome-readme-template" alt="last update" />
-  </a>
-</p>
-   
 <h4>
     <a href="https://cgvparttime.netlify.app/">View Demo</a>
   </h4>
@@ -34,7 +23,7 @@ Maybe you can mention me or this repo in the acknowledgements too
 # :notebook_with_decorative_cover: Table of Contents
 
 - [About the Project](#star2-about-the-project)
-  - [Structure](#build-structure)
+  - [Structure](#sparkles-structure)
   - [Screenshots](#camera-screenshots)
   - [Tech Stack](#space_invader-tech-stack)
   - [Environment Variables](#key-environment-variables)
@@ -52,9 +41,13 @@ Maybe you can mention me or this repo in the acknowledgements too
 
 ## :star2: About the Project
 
-## :build: structure
+  <p>영화관 시간이 유동적으로 변함에 따라 출근시간도 계속 변동되어 알바생들의 혼란을 없애고자 계산기 기능을 제작, 시간을 확인하는 잠깐의 시간동안 얻을 수 있는 정보가 무엇이 있을까 생각해본 결과, 현재 개봉작들과 버스를 이용하는 인원이 많아 버스 도착정보를 알 수 있는 기능 추가</p>
 
-  <img src="./relative/system.png" width="200px" height="200px">
+  <p>알바생들의 출근시간 계산을 자동화시켜 지각률을 낮추고, 매니저들의 스케줄 작성에 도움을 주기 위해 개발하게 됐습니다.</p>
+
+## :sparkles: structure
+
+  <img src="./relative/system.png" style="text-align:center">
 
 <!-- Screenshots -->
 
