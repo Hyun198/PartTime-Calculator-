@@ -34,9 +34,9 @@ Maybe you can mention me or this repo in the acknowledgements too
 # :notebook_with_decorative_cover: Table of Contents
 
 - [About the Project](#star2-about-the-project)
+  - [Structure](#build-structure)
   - [Screenshots](#camera-screenshots)
   - [Tech Stack](#space_invader-tech-stack)
-  - [Features](#dart-features)
   - [Environment Variables](#key-environment-variables)
 - [Getting Started](#toolbox-getting-started)
   - [Prerequisites](#bangbang-prerequisites)
@@ -44,8 +44,6 @@ Maybe you can mention me or this repo in the acknowledgements too
   - [Deployment](#triangular_flag_on_post-deployment)
 - [Usage](#eyes-usage)
 
-- [Contributing](#wave-contributing)
-  - [Code of Conduct](#scroll-code-of-conduct)
 - [License](#warning-license)
 - [Contact](#handshake-contact)
 - [Acknowledgements](#gem-acknowledgements)
@@ -53,6 +51,10 @@ Maybe you can mention me or this repo in the acknowledgements too
 <!-- About the Project -->
 
 ## :star2: About the Project
+
+## :build: structure
+
+  <img src="./relative/system.png" width="200px" height="200px">
 
 <!-- Screenshots -->
 
@@ -76,14 +78,6 @@ Maybe you can mention me or this repo in the acknowledgements too
     <li>CSS</li>
   </ul>
 </details>
-
-<!-- Features -->
-
-### :dart: Features
-
-- Feature 1
-- Feature 2
-- Feature 3
 
 <!-- Env Variables -->
 
@@ -139,33 +133,6 @@ Start the server
   npm start
 ```
 
-<!-- Usage -->
-
-## :eyes: Use API
-
-이용한 API들
-
-<div style="width: 150px; height:150px;">
-<img src="./relative/kofic.jpg" alt="kofic">
-<img src="./relative/kmdb.jpg" alt="kmdb">
-</div>
-
-<!-- Contributing -->
-
-## :wave: Contributing
-
-<a href="https://github.com/Hyun198/PartTime-Calculator-
-/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=Hyun198/PartTime-Calculator-
-" />
-</a>
-
-Contributions are always welcome!
-
-See `contributing.md` for ways to get started.
-
-<!-- License -->
-
 ## :warning: License
 
 Distributed under the no License. See LICENSE.txt for more information.
@@ -183,3 +150,5 @@ Project Link: [https://github.com/Hyun198/PartTime-Calculator-](https://github.c
 Use this section to mention useful resources and libraries that you have used in your projects.
 
 - [fontawesome](https://fontawesome.com/)
+- [Kmdb](https://www.kmdb.or.kr/info/api/apiList)
+- [kofic](https://www.kobis.or.kr/kobisopenapi/homepg/main/main.do)
