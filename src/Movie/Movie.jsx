@@ -128,7 +128,7 @@ function Movie() {
                         영화 목록 불러오는 중...
                     </div>
                 ) : (
-                    movieList.map((movie) => (
+                    movieList?.map((movie) => (
                         <div className="movie-list" key={movie.movieCd}>
                             <img src={movie.posterURL} alt={movie.movieNm} />
                             <div className="movie">
