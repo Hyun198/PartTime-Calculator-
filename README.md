@@ -40,7 +40,6 @@ Maybe you can mention me or this repo in the acknowledgements too
   - [Environment Variables](#key-environment-variables)
 - [Getting Started](#toolbox-getting-started)
   - [Prerequisites](#bangbang-prerequisites)
-  - [Installation](#gear-installation)
   - [Run Locally](#running-run-locally)
   - [Deployment](#triangular_flag_on_post-deployment)
 - [Usage](#eyes-usage)
@@ -61,8 +60,7 @@ Maybe you can mention me or this repo in the acknowledgements too
 
 <div align="center"> 
   <img src="./relative/cgvapp.png" alt="screenshot" />
-  <img src="./relative/cgvapp.png" alt="screenshot" />
-  <img src="./relative/cgvapp.png" alt="screenshot" />
+
 </div>
 
 <!-- TechStack -->
@@ -113,17 +111,6 @@ Install repository
  npm install
 ```
 
-<!-- Installation -->
-
-### :gear: Installation
-
-Install my-project with npm
-
-```bash
-  yarn install my-project
-  cd my-project
-```
-
 <!-- Run Locally -->
 
 ### :running: Run Locally
@@ -158,7 +145,7 @@ Start the server
 
 이용한 API들
 
-<div>
+<div style="width: 150px; height:150px;">
 <img src="./relative/kofic.jpg" alt="kofic">
 <img src="./relative/kmdb.jpg" alt="kmdb">
 </div>
