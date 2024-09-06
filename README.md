@@ -28,10 +28,9 @@ Maybe you can mention me or this repo in the acknowledgements too
   - [Tech Stack](#space_invader-tech-stack)
   - [Environment Variables](#key-environment-variables)
 - [Getting Started](#toolbox-getting-started)
+
   - [Prerequisites](#bangbang-prerequisites)
   - [Run Locally](#running-run-locally)
-  - [Deployment](#triangular_flag_on_post-deployment)
-- [Usage](#eyes-usage)
 
 - [Acknowledgements](#gem-acknowledgements)
 
@@ -60,10 +59,12 @@ Maybe you can mention me or this repo in the acknowledgements too
 
 ### :space_invader: Tech Stack
 
+  <div style="display:flex">
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="html" />
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white" alt="javascript" />
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="css" />
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="react" />
+  </div>
 <!-- Env Variables -->
 
 ### :key: Environment Variables
