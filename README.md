@@ -33,8 +33,6 @@ Maybe you can mention me or this repo in the acknowledgements too
   - [Deployment](#triangular_flag_on_post-deployment)
 - [Usage](#eyes-usage)
 
-- [License](#warning-license)
-- [Contact](#handshake-contact)
 - [Acknowledgements](#gem-acknowledgements)
 
 <!-- About the Project -->
@@ -120,22 +118,9 @@ Start the server
   npm start
 ```
 
-## :warning: License
-
-Distributed under the no License. See LICENSE.txt for more information.
-
-<!-- Contact -->
-
-## :handshake: Contact
-
-Project Link: [https://github.com/Hyun198/PartTime-Calculator-](https://github.com/Hyun198/PartTime-Calculator-)
-
 <!-- Acknowledgments -->
 
 ## :gem: Acknowledgements
 
-Use this section to mention useful resources and libraries that you have used in your projects.
-
-- [fontawesome](https://fontawesome.com/)
 - [Kmdb](https://www.kmdb.or.kr/info/api/apiList)
 - [kofic](https://www.kobis.or.kr/kobisopenapi/homepg/main/main.do)
