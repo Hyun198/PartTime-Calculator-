@@ -103,7 +103,7 @@ function Bus() {
                 <input
                     type="text"
                     className="search-box"
-                    placeholder="bus..."
+
                     ref={keywordInput}
                     onKeyPress={handleKeyPress}
                 />
@@ -169,7 +169,7 @@ function Bus() {
 
                             </Col>
                         ) : (
-                            <p>Loading bus information...</p>
+                            <p>Loading...</p>
                         )}
                         {stations.length > 0 && (
                             <Col lg={6} className="bus-route-info">
