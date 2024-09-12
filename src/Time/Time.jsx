@@ -18,12 +18,13 @@ function Time() {
 
     const handleTimeChange = (event, week) => {
         const { id, value } = event.target;
-        if (value.match(/^\d+$/)) {
+        if (!isNaN(value)) {  //입력된 값이 숫자로만 이루어져 있는지 확인 
             if (week === "week4") {
                 setInputTime4((prev) => ({
                     ...prev,
                     [id]: value,
                 }));
+                console.log(inputTime4);
             } else {
                 setInputTime2((prev) => ({
                     ...prev,
@@ -43,19 +44,19 @@ function Time() {
         return result.format("HH:mm");
     };
 
-    const calculateTimeWeek4End = () => {
+    const calculateTimeWeek4End = () => { //주 4마감
         setResultTime4(calculateEndTime(inputTime4.hour, inputTime4.minute, 7, 50)); //영화시작 시간 +10 - 8시간
     };
 
-    const calculateTimeWeek4End2 = () => {
+    const calculateTimeWeek4End2 = () => { //주 4 마감2
         setResultTime4(calculateEndTime(inputTime4.hour, inputTime4.minute, 7, 20)); //영화시간 + 40 - 8시간
     };
 
-    const calculateTimeWeek2End = () => {
+    const calculateTimeWeek2End = () => { //주 2 마감
         setResultTime2(calculateEndTime(inputTime2.hour, inputTime2.minute, 7, 20)); //영화시작 시간+10 -7시간30분
     };
 
-    const calculateTimeWeek2End2 = () => {
+    const calculateTimeWeek2End2 = () => { //주 2 마감2
         setResultTime2(calculateEndTime(inputTime2.hour, inputTime2.minute, 6, 50)); //영화시간 + 40 - 7시간 30분
     };
 

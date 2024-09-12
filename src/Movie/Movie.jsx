@@ -123,7 +123,7 @@ function Movie() {
             )}
 
             {!loading &&
-                (movieList.length === 0 ? (
+                (movieList?.length === 0 ? (
                     <div style={{ color: "black", fontSize: "20px" }}>
                         영화 목록 불러오는 중...
                     </div>
@@ -154,7 +154,7 @@ function Movie() {
                                         ))}
                                     </p>
                                     <p className="show-time">
-                                        Run:{movie.movieInfo.movieInfoResult.movieInfo.showTm}
+                                        Runnig Time: {movie.movieInfo.movieInfoResult.movieInfo.showTm} M
                                     </p>
 
                                 </div>

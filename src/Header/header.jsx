@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import cgv_logo from "../assets/cgv.png";
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faBars, faX } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faX } from '@fortawesome/free-solid-svg-icons'
 import './header.css'
 
 
@@ -23,15 +23,10 @@ function Header() {
 
     let todaydate = `${today.year}${today.month}${today.day}`
 
-    const GotoHome = () => {
-        navigate('/');
-    }
     const menu = [
         "home",
         "bus",
         "boxoffice",
-        "weather",
-
     ]
 
 
