@@ -67,18 +67,6 @@ function Movie() {
         }
     }
 
-    const formatNumber = (number) => {
-        if (number >= 10000000) {
-            return Math.round(number / 10000000) + "천만";
-        } else if (number >= 100000) {
-            return Math.round(number / 100000) + "만";
-        } else if (number >= 10000 && number < 100000) {
-            return Math.round(number / 10000) + "만";
-        }
-
-        return number;
-    };
-
     const getPoster = async (title, openDt) => {
         try {
             const KMDB_API_KEY = process.env.REACT_APP_KOREA_FILM_KEY
@@ -142,11 +130,11 @@ function Movie() {
                                     </div>
 
                                     <p className="movie-audCnt">
-                                        오늘 관람객 수: {formatNumber(movie.audiCnt)} 명
+                                        오늘 관람객 수: {Number(movie.audiCnt).toLocaleString()} 명
                                     </p>
                                     <p>개봉일: {movie.openDt}</p>
                                     <p className="movie-audAll">
-                                        총 관람객 수: {formatNumber(movie.audiAcc)} 명
+                                        총 관람객 수: {Number(movie.audiAcc).toLocaleString()} 명
                                     </p>
                                     <p className="movie-actors">
                                         {movie.movieInfo.movieInfoResult.movieInfo.actors.slice(0, 3).map(actor => (

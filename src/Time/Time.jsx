@@ -24,7 +24,7 @@ function Time() {
                     ...prev,
                     [id]: value,
                 }));
-                console.log(inputTime4);
+
             } else {
                 setInputTime2((prev) => ({
                     ...prev,
