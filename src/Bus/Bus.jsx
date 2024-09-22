@@ -65,6 +65,7 @@ function Bus() {
                     return routeId;
                 }
             }
+
         } catch (error) {
             console.error("Error fetching bus code:", error);
         }
