@@ -1,4 +1,5 @@
 import React, { useEffect, useState, CSSProperties } from "react";
+import axios from "axios";
 import MoonLoader from "react-spinners/MoonLoader";
 import "./Movie.css";
 import all from '../assets/all.png'
@@ -20,6 +21,7 @@ function Movie() {
     useEffect(() => {
         fetchMovies();
     }, []);
+
     const fetchMovies = async () => {
         try {
             const today = new Date();
@@ -31,20 +33,21 @@ function Movie() {
 
             month = month < 10 ? "0" + month : month;
             day = day < 10 ? "0" + day : day;
-            let targetDt = `${year}${month}${day - 1}`;
+            const targetDt = `${year}${month}${day - 1}`;
 
             const api_key = process.env.REACT_APP_KOBIS_API_KEY
             const url = `https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${api_key}&targetDt=${targetDt}`;
-            const response = await fetch(url);
-            const data = await response.json();
+            const response = await axios(url);
+            const data = response;
             const BoxOfficeList = data.boxOfficeResult.dailyBoxOfficeList;
             if (!BoxOfficeList) {
                 throw new Error("Invalid API resposne");
             }
+            //poster 정보 불러오기
             const posterMoviesList = await Promise.all(
                 BoxOfficeList.map(async (movie) => {
+                    const movieInfo = await fetchMoviesInfo(movie.movieCd);
                     const posterURL = await getPoster(movie.movieNm, movie.openDt);
-                    const movieInfo = await fetchMoviesInfo(movie.movieCd)
                     return { ...movie, movieInfo, posterURL };
                 })
             );
@@ -60,8 +63,8 @@ function Movie() {
         try {
             const api_key = process.env.REACT_APP_KOBIS_API_KEY;
             const url = `https://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=${api_key}&movieCd=${movieCd}`
-            const response = await fetch(url);
-            return await response.json();
+            const response = await axios(url);
+            return response;
         } catch (error) {
             console.error(error);
         }
@@ -112,8 +115,8 @@ function Movie() {
 
             {!loading &&
                 (movieList?.length === 0 ? (
-                    <div style={{ color: "black", fontSize: "20px" }}>
-                        영화 목록 불러오는 중...
+                    <div style={{ color: "black", fontSize: "20px", fontWeight: "700", textAlign: "center" }}>
+                        현재 영화 정보 업데이트 중이라 나중에 다시 시도해주시기 바랍니다.
                     </div>
                 ) : (
                     movieList?.map((movie) => (
@@ -142,7 +145,7 @@ function Movie() {
                                         ))}
                                     </p>
                                     <p className="show-time">
-                                        Runnig Time: {movie.movieInfo.movieInfoResult.movieInfo.showTm} M
+                                        Running Time: {movie.movieInfo.movieInfoResult.movieInfo.showTm} M
                                     </p>
 
                                 </div>

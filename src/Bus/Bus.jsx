@@ -5,10 +5,18 @@ import axios from "axios";
 import './Bus.style.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
 
 import useBusInfo from "./hooks/useBusInfo"
 import useBusRouteList from "./hooks/useBusRouteList";
 import useStationArrive from "./hooks/useStationArrive";
+
+//내가 알고싶은 도착정보의 버스 번호를 검색
+//검색한 버스의 routeId를 반환 받음. routeId를 통해 정류장 목록을 얻기 위해서
+//routeId로 해당 노선의 모든 정류장들의 목록을 얻음.
+//정류장 목록에서 원하는 정류장을 선택하면 해당 정류장에 도착하는 버스들의 목록을 얻을 수 있음.
+
+
 function Bus() {
     const serviceKey = process.env.REACT_APP_BUS_API_KEY;
 
@@ -19,9 +27,9 @@ function Bus() {
     const [hasSearched, setHasSearched] = useState(false);
     const keywordInput = useRef(null);
 
-    const { busInfo, fetchBusCodeInfo } = useBusInfo();
-    const { stations, fetchBusRoute } = useBusRouteList();
-    const { arrivals, fetchArrive } = useStationArrive();
+    const { busInfo, fetchBusCodeInfo } = useBusInfo(); // 노선 버스에 대한 정보 (첫차, 막차 등)
+    const { stations, fetchBusRoute } = useBusRouteList(); // 해당 버스의 노선에 있는 모든 정류장들
+    const { arrivals, fetchArrive } = useStationArrive(); // 선택한 정류장의 도착 예정 버스들
 
     const handleSearch = () => {
         setKeyword(keywordInput.current.value);
@@ -41,7 +49,7 @@ function Bus() {
 
 
     //버스 노선정보 조회
-    const fetchBusCode = async (keyword) => {
+    const SearchBusCode = async (keyword) => {
         let url = `http://apis.data.go.kr/6410000/busrouteservice/getBusRouteList?serviceKey=${serviceKey}&keyword=${keyword}`;
 
         try {
@@ -76,12 +84,14 @@ function Bus() {
         await fetchArrive(stationId);
     };
 
+
+
     const sortedArrivals = [...arrivals].sort((a, b) => a.predictTime1 - b.predictTime1);
 
     useEffect(() => {
         const getBusCode = async () => {
             if (keyword) {
-                const routeId = await fetchBusCode(keyword);
+                const routeId = await SearchBusCode(keyword);
                 if (routeId) {
                     setRouteId(routeId);
                 }
@@ -92,10 +102,14 @@ function Bus() {
 
     useEffect(() => {
         if (routeId) {
+            console.log(routeId);
             fetchBusCodeInfo(routeId); //버스 노선 정보
-            fetchBusRoute(routeId); // keyword 노선의 경유 정류장들
+            fetchBusRoute(routeId); // 검색한 버스 노선의 경유 정류장들
+
         }
     }, [routeId]);
+
+
 
     return (
         <Container className="bus-container">
@@ -112,6 +126,7 @@ function Bus() {
             </div>
             {hasSearched && (
                 <Container>
+
                     <Row>
                         {busInfo ? (
                             <Col lg={6} className="bus-route-info">
@@ -166,8 +181,6 @@ function Bus() {
                                     </tbody>
 
                                 </Table>
-
-
                             </Col>
                         ) : (
                             <p>Loading...</p>
@@ -197,6 +210,7 @@ function Bus() {
                                                 </Card>
                                             </Col>
                                         ))}
+
                                     </Row>
                                 </div>
                             </Col>
@@ -233,6 +247,21 @@ function Bus() {
                                 )}
                             </div>
                         </Col>
+                    </Row>
+                    <Row>
+                        <MapContainer center={[37.632174, 126.707150]} zoom={15} scrollWheelZoom={false}>
+                            <TileLayer
+                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            />
+                            {stations.map(station => (
+                                <Marker key={station.id} position={station.position}>
+                                    <Popup>
+                                        {station.stationName}
+                                    </Popup>
+                                </Marker>
+                            ))}
+                        </MapContainer>
                     </Row>
                 </Container>
             )}

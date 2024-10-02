@@ -29,7 +29,10 @@ const useBusRouteList = () => {
             const stationData = Array.from(busRouteStationLists).map(station => {
                 const stationId = station.getElementsByTagName('stationId')[0]?.textContent || 'Unknown';
                 const stationName = station.getElementsByTagName('stationName')[0]?.textContent || 'Unknown';
-                return { stationId, stationName };
+                const x = station.getElementsByTagName('x')[0]?.textContent;
+                const y = station.getElementsByTagName('y')[0]?.textContent;
+
+                return { stationId, stationName, position: [parseFloat(y), parseFloat(x)] };
             });
 
             setStations(stationData);
