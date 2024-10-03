@@ -127,3 +127,4 @@ Start the server
 
 - [Kmdb](https://www.kmdb.or.kr/info/api/apiList)
 - [kofic](https://www.kobis.or.kr/kobisopenapi/homepg/main/main.do)
+- [openstreetmap](https://wiki.openstreetmap.org/)
