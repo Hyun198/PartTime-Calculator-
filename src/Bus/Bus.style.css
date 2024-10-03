@@ -52,10 +52,9 @@
 }
 
 .leaflet-container {
-    height: 500px;
-    /* 원하는 높이 */
     width: 100%;
-    /* 또는 원하는 너비 */
+    height: 550px;
+    border-radius: 10px;
 }
 
 
@@ -63,13 +62,17 @@
     color: black;
 }
 
-.station-list {
-    color: white;
+.leaflet-popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    width: 100%;
-    height: 550px;
+.leaflet-popup-content button {
+    font-size: 16px;
+    text-align: center;
 
-    border-radius: 10px;
+    height: 35px;
 }
 
 .station-card {

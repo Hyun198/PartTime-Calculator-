@@ -27,7 +27,6 @@ function Bus() {
     const [hasSearched, setHasSearched] = useState(false);
     const keywordInput = useRef(null);
 
-    const { busInfo, fetchBusCodeInfo } = useBusInfo(); // 노선 버스에 대한 정보 (첫차, 막차 등)
     const { stations, fetchBusRoute } = useBusRouteList(); // 해당 버스의 노선에 있는 모든 정류장들
     const { arrivals, fetchArrive } = useStationArrive(); // 선택한 정류장의 도착 예정 버스들
 
@@ -102,10 +101,7 @@ function Bus() {
 
     useEffect(() => {
         if (routeId) {
-            console.log(routeId);
-            fetchBusCodeInfo(routeId); //버스 노선 정보
             fetchBusRoute(routeId); // 검색한 버스 노선의 경유 정류장들
-
         }
     }, [routeId]);
 
@@ -113,7 +109,7 @@ function Bus() {
 
     return (
         <Container className="bus-container">
-            <h2><span className="gimposi">김포시</span> <br></br>버스 시간표 조회</h2>
+            <h2><span className="gimposi">김포시</span> 실시간 버스 조회</h2>
             <div className="search-form">
                 <input
                     type="text"
@@ -126,102 +122,25 @@ function Bus() {
             </div>
             {hasSearched && (
                 <Container>
-
                     <Row>
-                        {busInfo ? (
-                            <Col lg={6} className="bus-route-info">
-                                <h2>{keyword} 버스 노선 정보</h2>
-                                <Table className="route-table" striped bordered hover>
-                                    <thead>
-                                        <tr className="table-primary">
-                                            <th colSpan="2">평일 기점</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td >첫차</td>
-                                            <td>{busInfo.upFirstTime}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>막차</td>
-                                            <td>{busInfo.upLastTime}</td>
-                                        </tr>
-                                    </tbody>
-
-                                    <thead>
-                                        <tr className="table-primary">
-                                            <th colSpan="2">종점 기점</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr >
-                                            <td>첫차</td>
-                                            <td>{busInfo.downFirstTime}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>막차</td>
-                                            <td>{busInfo.downLastTime}</td>
-                                        </tr>
-                                    </tbody>
-
-                                    <thead>
-                                        <tr className="table-primary">
-                                            <th colSpan="2">기타 정보</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>평일 최소 배차 간격</td>
-                                            <td>{busInfo.peekAlloc} 분</td>
-                                        </tr>
-                                        <tr>
-                                            <td>평일 최대 배차 간격</td>
-                                            <td>{busInfo.nPeekAlloc} 분 </td>
-                                        </tr>
-                                    </tbody>
-
-                                </Table>
-                            </Col>
-                        ) : (
-                            <p>Loading...</p>
-                        )}
-                        {stations.length > 0 && (
-                            <Col lg={6} className="bus-route-info">
-                                <h2>Stations</h2>
-                                <div className="station-list">
-                                    <Row>
-                                        {stations.map((station) => (
-                                            <Col md={12} key={station.stationId}>
-                                                <Card className="station-card">
-                                                    <Card.Header as="h5">{station.stationName}</Card.Header>
-                                                    <Card.Body>
-                                                        <Button
-                                                            variant="primary"
-                                                            onClick={() =>
-                                                                handleStationClick(
-                                                                    station.stationId,
-                                                                    station.stationName
-                                                                )
-                                                            }
-                                                        >
-                                                            도착 정보 보기
-                                                        </Button>
-                                                    </Card.Body>
-                                                </Card>
-                                            </Col>
-                                        ))}
-
-                                    </Row>
-                                </div>
-                            </Col>
-                        )}
-                    </Row>
-                    <Row>
+                        <MapContainer center={[37.632174, 126.707150]} zoom={15} scrollWheelZoom={false}>
+                            <TileLayer
+                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            />
+                            {stations.map(station => (
+                                <Marker key={station.id} position={station.position}>
+                                    <Popup>
+                                        <h5>{station.stationName}</h5>
+                                        <Button variant="primary" onClick={() => handleStationClick(station.stationId, station.stationName)}>도착 정보 보기</Button>
+                                    </Popup>
+                                </Marker>
+                            ))}
+                        </MapContainer>
                         <Col lg={12}>
                             <div className="bus-arrive">
                                 <h2>{selectedStation?.stationName} <br></br>정류장 도착 도착 정보</h2>
                                 {arrivals.length > 0 ? (
-
                                     <div className="bus-arrivals-carousel">
                                         {sortedArrivals?.map((arrival, index) => (
                                             <Card className="arrival-card" key={index}>
@@ -240,28 +159,12 @@ function Bus() {
                                                 </Card.Body>
                                             </Card>
                                         ))}
-
                                     </div>
                                 ) : (
                                     <p style={{ fontSize: "30px", textAlign: "center" }}>도착 버스가 없음 😢</p>
                                 )}
                             </div>
                         </Col>
-                    </Row>
-                    <Row>
-                        <MapContainer center={[37.632174, 126.707150]} zoom={15} scrollWheelZoom={false}>
-                            <TileLayer
-                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                            />
-                            {stations.map(station => (
-                                <Marker key={station.id} position={station.position}>
-                                    <Popup>
-                                        {station.stationName}
-                                    </Popup>
-                                </Marker>
-                            ))}
-                        </MapContainer>
                     </Row>
                 </Container>
             )}
