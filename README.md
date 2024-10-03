@@ -42,6 +42,8 @@ Maybe you can mention me or this repo in the acknowledgements too
 
   <p>알바생들의 출근시간 계산을 자동화시켜 지각률을 낮추고, 매니저들의 스케줄 작성에 도움을 주기 위해 개발하게 됐습니다.</p>
 
+  <p>+ 버스 정보를 보다 직관적으로 알기 쉽게 지도 위에 정류장들을 마커로 찍어서 표현 (24.10.03)</p>
+
 ## :sparkles: structure
 
   <img src="./relative/system.png" style="text-align:center">
