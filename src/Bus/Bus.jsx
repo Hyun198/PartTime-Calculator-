@@ -1,13 +1,13 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Container, Row, Col, Card, Button, Table } from "react-bootstrap";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
 import './Bus.style.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
 
-import useBusInfo from "./hooks/useBusInfo"
 import useBusRouteList from "./hooks/useBusRouteList";
 import useStationArrive from "./hooks/useStationArrive";
 
@@ -16,6 +16,14 @@ import useStationArrive from "./hooks/useStationArrive";
 //routeId로 해당 노선의 모든 정류장들의 목록을 얻음.
 //정류장 목록에서 원하는 정류장을 선택하면 해당 정류장에 도착하는 버스들의 목록을 얻을 수 있음.
 
+const redIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+});
 
 function Bus() {
     const serviceKey = process.env.REACT_APP_BUS_API_KEY;
@@ -114,7 +122,6 @@ function Bus() {
                 <input
                     type="text"
                     className="search-box"
-
                     ref={keywordInput}
                     onKeyPress={handleKeyPress}
                 />
@@ -128,6 +135,12 @@ function Bus() {
                                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             />
+
+                            <Marker position={[37.632174, 126.707150]} icon={redIcon}>
+                                <Popup>cgv 김포한강</Popup>
+                            </Marker>
+
+
                             {stations.map(station => (
                                 <Marker key={station.id} position={station.position}>
                                     <Popup>
