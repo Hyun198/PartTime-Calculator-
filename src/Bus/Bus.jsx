@@ -117,7 +117,7 @@ function Bus() {
 
     return (
         <Container className="bus-container">
-            <h2><span className="gimposi">김포시</span> 실시간 버스 조회</h2>
+            <h2><span className="gimposi">김포시</span><br></br>실시간 버스 조회</h2>
             <div className="search-form">
                 <input
                     type="text"
