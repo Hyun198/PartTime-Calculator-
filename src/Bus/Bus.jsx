@@ -123,33 +123,43 @@ function Bus() {
                     type="text"
                     className="search-box"
                     ref={keywordInput}
+                    placeholder="버스 번호 입력"
                     onKeyPress={handleKeyPress}
                 />
+
                 <button onClick={handleSearch}><FontAwesomeIcon icon={faMagnifyingGlass} size="2x" /></button>
             </div>
+
+
+            <Container>
+                <Row>
+                    <MapContainer center={[37.632174, 126.707150]} zoom={15} scrollWheelZoom={false}>
+                        <TileLayer
+                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        />
+
+                        <Marker position={[37.632174, 126.707150]} icon={redIcon}>
+                            <Popup>cgv 김포한강</Popup>
+                        </Marker>
+
+                        {/* 검색 후 정류장들 마커 표시 */}
+                        {stations.map(station => (
+                            <Marker key={station.id} position={station.position}>
+                                <Popup>
+                                    <h5>{station.stationName}</h5>
+                                    <Button variant="primary" onClick={() => handleStationClick(station.stationId, station.stationName)}>도착 정보 보기</Button>
+                                </Popup>
+                            </Marker>
+                        ))}
+                    </MapContainer>
+                </Row>
+            </Container>
+
+
             {hasSearched && (
                 <Container>
                     <Row>
-                        <MapContainer center={[37.632174, 126.707150]} zoom={15} scrollWheelZoom={false}>
-                            <TileLayer
-                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                            />
-
-                            <Marker position={[37.632174, 126.707150]} icon={redIcon}>
-                                <Popup>cgv 김포한강</Popup>
-                            </Marker>
-
-
-                            {stations.map(station => (
-                                <Marker key={station.id} position={station.position}>
-                                    <Popup>
-                                        <h5>{station.stationName}</h5>
-                                        <Button variant="primary" onClick={() => handleStationClick(station.stationId, station.stationName)}>도착 정보 보기</Button>
-                                    </Popup>
-                                </Marker>
-                            ))}
-                        </MapContainer>
                         <Col lg={12}>
                             <div className="bus-arrive">
                                 <h2>{selectedStation?.stationName} <br></br>정류장 도착 도착 정보</h2>

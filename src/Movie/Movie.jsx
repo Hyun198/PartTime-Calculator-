@@ -1,5 +1,4 @@
 import React, { useEffect, useState, CSSProperties } from "react";
-import axios from "axios";
 import MoonLoader from "react-spinners/MoonLoader";
 import "./Movie.css";
 import all from '../assets/all.png'
@@ -32,16 +31,17 @@ function Movie() {
             let day = today.getDate();
 
             month = month < 10 ? "0" + month : month;
+            day = Number(day) - 1;
             day = day < 10 ? "0" + day : day;
-            const targetDt = `${year}${month}${day - 1}`;
-
+            const targetDt = `${year}${month}${day}`;
             const api_key = process.env.REACT_APP_KOBIS_API_KEY
             const url = `https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${api_key}&targetDt=${targetDt}`;
-            const response = await axios(url);
-            const data = response;
+            const response = await fetch(url);
+            console.log(response);
+            const data = await response.json();
             const BoxOfficeList = data.boxOfficeResult.dailyBoxOfficeList;
             if (!BoxOfficeList) {
-                throw new Error("Invalid API resposne");
+                throw new Error("Invalid API response");
             }
             //poster 정보 불러오기
             const posterMoviesList = await Promise.all(
@@ -63,8 +63,9 @@ function Movie() {
         try {
             const api_key = process.env.REACT_APP_KOBIS_API_KEY;
             const url = `https://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=${api_key}&movieCd=${movieCd}`
-            const response = await axios(url);
-            return response;
+            const response = await fetch(url);
+            const data = await response.json();
+            return data;
         } catch (error) {
             console.error(error);
         }
@@ -133,7 +134,7 @@ function Movie() {
                                     </div>
 
                                     <p className="movie-audCnt">
-                                        오늘 관람객 수: {Number(movie.audiCnt).toLocaleString()} 명
+                                        전날 관람객 수: {Number(movie.audiCnt).toLocaleString()} 명
                                     </p>
                                     <p>개봉일: {movie.openDt}</p>
                                     <p className="movie-audAll">
