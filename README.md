@@ -1,11 +1,3 @@
-<!--
-Hey, thanks for using the awesome-readme-template template.
-If you have any enhancements, then fork this project and create a pull request
-or just open an issue with the label "enhancement".
-
-Don't forget to give this project a star for additional support ;)
-Maybe you can mention me or this repo in the acknowledgements too
--->
 <div align="center">
 
   <img src="/relative/cgvapp.png" alt="logo" width="200" height="auto" />
@@ -13,6 +5,7 @@ Maybe you can mention me or this repo in the acknowledgements too
 
 <h4>
     <a href="https://cgvparttime.netlify.app/">View Demo</a>
+    
   </h4>
 </div>
 
@@ -22,12 +15,31 @@ Maybe you can mention me or this repo in the acknowledgements too
 
 ## :star2: About the Project
 
-  <h2 style="text-align:center">영화관 시간이 유동적으로 변함에 따라 출근시간도 계속 변동되어 알바생들의 혼란을 없애고자 계산기 기능을 제작</h2>
-  <p>알바생들의 출근시간 계산을 자동화시켜 지각률을 낮추고, 매니저들의 스케줄 작성에 도움을 주기 위해 개발</p>
+  <h2>프로젝트 목표</h2>
+  <strong>알바생들의 출근시간 계산을 자동화시켜 지각률을 낮추고, 직원들의 스케줄 작성에 도움을 주기 위해 개발</strong>
+
+  <p>출근 시간 계산기는 CGV 공식 홈페이지에서 <strong>금일 마지막 영화 시간</strong>을 입력받아, 알바생의 출근 시간을 자동으로 계산해주는 도구입니다. 간단한 시간 계산이지만, 특히 신입 아르바이트생에게 유용하며, 마지막 영화 시간이 갑작스럽게 변경되는 상황에서 편리하게 사용될 수 있습니다.</p>
+
+예시
+금일 마지막 영화 시간: 22:10  
+ 출근시간: 22:10 - 8:00 or - 7:30
+
+### 사용 예시
+
+    마지막 영화 시간을 기준으로 출근 시간을 계산합니다. 예시:
+
+    | 금일 마지막 영화 시간 | 출근 시간                  |
+    |----------------------|----------------------------|
+    | 22:10               | 22:10 - 8:00 = **14:10**   |
+    | 22:10               | 22:10 - 7:30 = **14:40**   |
+
+이 프로그램은 생각보다 어려운 출근 시간 계산을 자동화해 아르바이트생들이 더욱 정확한 출근 계획을 세울 수 있도록 도와줍니다.
+
   <ul>
     <li>마감 시간 입력시 출근시간 확인 가능</li>
     <li>일일 박스오피스 확인</li>
-    <li>출근에 도움이 될 수 있는 실시간 버스 도착 정보 조회 기능 추가 (24.10.03)  -Open StreetMap API를 이용해서 맵에 정류장 좌표를 표시</li>
+    <li>출근에 도움이 될 수 있는 실시간 버스 도착 정보 조회 기능 추가 (24.10.03)Open StreetMap API를 이용해서 맵에 정류장 좌표를 표시</li>
+  </ul>
 
 ## :sparkles: structure
 
