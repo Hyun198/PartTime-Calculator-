@@ -18,22 +18,6 @@ Maybe you can mention me or this repo in the acknowledgements too
 
 <br />
 
-<!-- Table of Contents -->
-
-# :notebook_with_decorative_cover: Table of Contents
-
-- [About the Project](#star2-about-the-project)
-  - [Structure](#sparkles-structure)
-  - [Screenshots](#camera-screenshots)
-  - [Tech Stack](#space_invader-tech-stack)
-  - [Environment Variables](#key-environment-variables)
-- [Getting Started](#toolbox-getting-started)
-
-  - [Prerequisites](#bangbang-prerequisites)
-  - [Run Locally](#running-run-locally)
-
-- [Acknowledgements](#gem-acknowledgements)
-
 <!-- About the Project -->
 
 ## :star2: About the Project
@@ -43,7 +27,7 @@ Maybe you can mention me or this repo in the acknowledgements too
   <ul>
     <li>마감 시간 입력시 출근시간 확인 가능</li>
     <li>일일 박스오피스 확인</li>
-    <li>출근에 도움이 될 수 있는 실시간 버스 도착 정보 조회 (24.10.03)</li>
+    <li>출근에 도움이 될 수 있는 실시간 버스 도착 정보 조회 기능 추가 (24.10.03)  -Open StreetMap API를 이용해서 맵에 정류장 좌표를 표시</li>
 
 ## :sparkles: structure
 
@@ -79,48 +63,6 @@ To run this project, you will need to add the following environment variables to
 `REACT_APP_KOREA_FILM_KEY`
 
 `REACT_APP_BUS_API_KEY`
-
-<!-- Getting Started -->
-
-## :toolbox: Getting Started
-
-<!-- Prerequisites -->
-
-### :bangbang: Prerequisites
-
-Install repository
-
-```bash
- npm install
-```
-
-<!-- Run Locally -->
-
-### :running: Run Locally
-
-Clone the project
-
-```bash
-  git clone https://github.com/Hyun198/PartTime-Calculator-.git
-```
-
-Go to the project directory
-
-```bash
-  cd my-project
-```
-
-Install dependencies
-
-```bash
-  npm install
-```
-
-Start the server
-
-```bash
-  npm start
-```
 
 <!-- Acknowledgments -->
 

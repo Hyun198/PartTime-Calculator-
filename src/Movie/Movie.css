@@ -14,7 +14,7 @@
     justify-content: space-between;
     animation: appear 6s linear;
     animation-timeline: view();
-    animation-range: entry 0% cover 20%;
+    animation-range: cover 0% cover 20%;
 }
 
 .movie-list img {
