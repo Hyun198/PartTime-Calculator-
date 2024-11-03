@@ -22,7 +22,7 @@ Maybe you can mention me or this repo in the acknowledgements too
 
 ## :star2: About the Project
 
-  <h2>영화관 시간이 유동적으로 변함에 따라 출근시간도 계속 변동되어 알바생들의 혼란을 없애고자 계산기 기능을 제작</h2>
+  <h2 style="text-align:center">영화관 시간이 유동적으로 변함에 따라 출근시간도 계속 변동되어 알바생들의 혼란을 없애고자 계산기 기능을 제작</h2>
   <p>알바생들의 출근시간 계산을 자동화시켜 지각률을 낮추고, 매니저들의 스케줄 작성에 도움을 주기 위해 개발</p>
   <ul>
     <li>마감 시간 입력시 출근시간 확인 가능</li>
