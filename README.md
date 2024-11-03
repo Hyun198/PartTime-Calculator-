@@ -40,6 +40,9 @@
     <li>일일 박스오피스 확인</li>
     <li>출근에 도움이 될 수 있는 실시간 버스 도착 정보 조회 기능 추가 (24.10.03)Open StreetMap API를 이용해서 맵에 정류장 좌표를 표시</li>
   </ul>
+  
+  <strong>웹 애플리케이션을 실행만 시키면 입력 란에 시간을 입력하지도 않아도 CGV홈페이지에서 금일 마지막 영화시간을 크롤링하여 자동으로 계산해주도록 개선</strong>
+  <a href="https://github.com/Hyun198/parttime_fullstack">출근시간 계산기 풀스택 버전</a>
 
 ## :sparkles: structure
 
