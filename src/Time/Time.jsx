@@ -72,6 +72,7 @@ function Time() {
         <>
             {!selectedWeek && (
                 <div className="time-card-content-header">
+                    <p>내가 해당하는 스케줄 선택한뒤 시간 입력하기</p>
                     <button onClick={() => handleWeekSelect("week2")}>주/2</button>
                     <button onClick={() => handleWeekSelect("week4")}>주/4</button>
                 </div>

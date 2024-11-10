@@ -53,8 +53,10 @@
 }
 
 .leaflet-container {
+    display: flex;
+    justify-content: center;
     width: 100%;
-    height: 550px;
+    height: 450px;
     border-radius: 10px;
 }
 

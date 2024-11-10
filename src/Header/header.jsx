@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import cgv_logo from "../assets/cgv.png";
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faX } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faX, faHouse } from '@fortawesome/free-solid-svg-icons'
 import './header.css'
 
 
@@ -47,7 +47,6 @@ function Header() {
     return (
 
         <div className="header-container" >
-
             <div className="today" >
                 <h2>{today.year}</h2>
                 <span>{today.month}월{today.day}일</span>
@@ -59,9 +58,9 @@ function Header() {
                 </a>
             </div>
 
-            {/* <div className="home-btn">
-                <FontAwesomeIcon icon={faHouse} onClick={GotoHome} />
-            </div> */}
+            <div className="home-btn">
+                <a href="/"><FontAwesomeIcon icon={faHouse} /></a>
+            </div>
 
             <div className="menu-bars">
                 <ul>
