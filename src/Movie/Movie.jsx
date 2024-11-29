@@ -37,7 +37,6 @@ function Movie() {
             const api_key = process.env.REACT_APP_KOBIS_API_KEY
             const url = `https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${api_key}&targetDt=${targetDt}`;
             const response = await fetch(url);
-            console.log(response);
             const data = await response.json();
             const BoxOfficeList = data.boxOfficeResult.dailyBoxOfficeList;
             if (!BoxOfficeList) {
@@ -117,7 +116,7 @@ function Movie() {
             {!loading &&
                 (movieList?.length === 0 ? (
                     <div style={{ color: "black", fontSize: "20px", fontWeight: "700", textAlign: "center" }}>
-                        현재 영화 정보 업데이트 중이라 나중에 다시 시도해주시기 바랍니다.
+                        다음에 다시 이용해주세요. 😭
                     </div>
                 ) : (
                     movieList?.map((movie) => (
@@ -146,7 +145,7 @@ function Movie() {
                                         ))}
                                     </p>
                                     <p className="show-time">
-                                        Running Time: {movie.movieInfo.movieInfoResult.movieInfo.showTm} M
+                                        Running Time: {movie.movieInfo.movieInfoResult.movieInfo.showTm}분
                                     </p>
 
                                 </div>

@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+import Moment from 'react-moment';
 import cgv_logo from "../assets/cgv.png";
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faX, faHouse } from '@fortawesome/free-solid-svg-icons'
+import useInterval from 'use-interval';
 import './header.css'
 
 
@@ -16,19 +18,22 @@ export const daytime = () => {
 }
 
 function Header() {
+
+    let [nowTime, setNowTime] = useState(Date.now());
+
+
     const [isNavOpen, setIsNavOpen] = useState(false);
     const navigate = useNavigate();
-
     const today = daytime();
-
-    let todaydate = `${today.year}${today.month}${today.day}`
-
+    let today_date = `${today.year}${today.month}${today.day}`
     const menu = [
         "home",
         "bus",
         "boxoffice",
     ]
-
+    useInterval(() => {
+        setNowTime(Date.now())
+    }, 1000)
 
     const handleGotoPage = (param) => {
         if (param === "home") {
@@ -36,10 +41,7 @@ function Header() {
         } else {
             navigate(`/${param}`)
         }
-
-
     }
-
     const toggleNav = () => {
         setIsNavOpen(!isNavOpen);
     }
@@ -47,13 +49,14 @@ function Header() {
     return (
 
         <div className="header-container" >
-            <div className="today" >
+            <div className="today">
                 <h2>{today.year}</h2>
                 <span>{today.month}월{today.day}일</span>
+                <Moment format={"HH:mm:ss"} style={{ "font-size": "28px" }}>{nowTime}</Moment>
             </div>
 
-            <div className="cgv" >
-                <a href={`http://www.cgv.co.kr/theaters/?areacode=02&theaterCode=0298&date=${todaydate}`} style={{ width: 150 }}>
+            <div className="cgv">
+                <a href={`http://www.cgv.co.kr/theaters/?areacode=02&theaterCode=0298&date=${today_date}`} style={{ width: 150 }}>
                     <img src={cgv_logo} alt="CGV Logo" className="header_img" />
                 </a>
             </div>
@@ -65,7 +68,7 @@ function Header() {
             <div className="menu-bars">
                 <ul>
                     {menu.map((item, index) => (
-                        <li id={index} onClick={() => handleGotoPage(item)}>#{item}</li>
+                        <li id={index} onClick={() => handleGotoPage(item)}>{item}</li>
                     ))}
                 </ul>
             </div>
