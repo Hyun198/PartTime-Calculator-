@@ -110,6 +110,7 @@ function Movie() {
                     size={50}
                     aria-label="Loading Spinner"
                     data-testid="loader"
+
                 />
             )}
 
@@ -120,8 +121,11 @@ function Movie() {
                     </div>
                 ) : (
                     movieList?.map((movie) => (
+
                         <div className="movie-list" key={movie.movieCd}>
-                            <img src={movie.posterURL} alt={movie.movieNm} />
+                            <a href={`https://search.naver.com/search.naver?where=nexearch&query=${encodeURIComponent(movie.movieNm)}`}>
+                                <img src={movie.posterURL} alt={movie.movieNm} />
+                            </a>
                             <div className="movie">
                                 <p className="rank">{movie.rank}</p>
                                 <div className="movie-desc">
@@ -151,6 +155,7 @@ function Movie() {
                                 </div>
                             </div>
                         </div>
+
                     ))
                 ))}
         </div>

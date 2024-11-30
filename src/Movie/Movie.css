@@ -13,11 +13,16 @@
 
 .movie-list img {
     width: 300px;
-    height: auto;
     object-fit: cover;
     object-position: center;
     border-radius: 8px;
     margin: 5px;
+    transition: all 0.3s ease-in-out;
+
+}
+
+.movie-list img:hover {
+    transform: scale(1.1);
 }
 
 .movie-list .movie {
