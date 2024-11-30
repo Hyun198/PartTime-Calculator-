@@ -123,7 +123,7 @@ function Movie() {
                     movieList?.map((movie) => (
 
                         <div className="movie-list" key={movie.movieCd}>
-                            <a href={`https://search.naver.com/search.naver?where=nexearch&query=${encodeURIComponent(movie.movieNm)}`}>
+                            <a href={`https://search.naver.com/search.naver?where=nexearch&query=${encodeURIComponent(movie.movieNm)}`} target="_blank">
                                 <img src={movie.posterURL} alt={movie.movieNm} />
                             </a>
                             <div className="movie">
