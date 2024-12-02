@@ -88,6 +88,8 @@ function Header() {
                     ))}
                 </ul>
             </div>
+
+            {isNavOpen && <div className="overlay" onClick={toggleNav}></div>}
         </div>
 
 
