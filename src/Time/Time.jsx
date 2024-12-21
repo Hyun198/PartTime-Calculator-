@@ -27,7 +27,7 @@ function Time() {
             hours: hourDiff,
             minutes: minuteDiff,
         });
-        return result.format("HH:mm");
+        return result.format("HH시 mm분");
     };
 
     const handle_Calculate = (hourDiff, minuteDiff) => {
@@ -94,8 +94,8 @@ function Time() {
                             <div className="time-card-content-result">
                                 {result && (
                                     <div>
-                                        <p style={{ color: "black" }}>출근 시간</p>
-                                        <p style={{ color: "black" }}>{result}</p>
+                                        <p>출근 시간</p>
+                                        <span className="time">{result}</span>
                                     </div>
                                 )}
 
@@ -134,7 +134,7 @@ function Time() {
                             </div>
                             <div className="time-card-content-result">
                                 <p>출근 시간</p>
-                                <p className="time">{result}</p>
+                                <span className="time">{result}</span>
                             </div>
                             <div className="goback-btn" onClick={handleGoBack}>뒤로 가기</div>
                         </>
