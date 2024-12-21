@@ -15,8 +15,12 @@ function Time() {
 
     const handleTimeChange = (event) => {
         const { id, value } = event.target;
-        if (!isNaN(value)) {  //입력된 값이 숫자로만 이루어져 있는지 확인 
-            setInput((prev) => ({ ...prev, [id]: value }));
+        if (!isNaN(value) && value.length <= 2) {
+            if (id === "hour" && value <= 23) {  // hour는 00~23 사이만 입력
+                setInput((prev) => ({ ...prev, [id]: value }));
+            } else if (id === "minute" && value <= 59) {  // minute는 00~59 사이만 입력
+                setInput((prev) => ({ ...prev, [id]: value }));
+            }
         }
     };
 
@@ -31,6 +35,10 @@ function Time() {
     };
 
     const handle_Calculate = (hourDiff, minuteDiff) => {
+        if (!input.hour || !input.minute) {
+            alert("올바른 시간을 입력해주세요");
+            return;
+        }
         setResult(Calculate_END_Time(input.hour, input.minute, hourDiff, minuteDiff));
     }
 
