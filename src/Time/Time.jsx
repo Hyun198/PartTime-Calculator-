@@ -55,16 +55,23 @@ function Time() {
         week2: [
             { label: "마감", hourDiff: 7, minuteDiff: 20 },
             { label: "마감2", hourDiff: 6, minuteDiff: 50 },
-        ]
+        ],
+        week2new: [
+            {label: "마감", hourDiff: 5, minuteDiff: 50},
+            {label: "마감2", hourDiff: 5, minuteDiff: 20},
+        ],
+
     };
 
     return (
         <>
+        <p style={{"text-align" : "center", "font-size" : "18px", "font-weight": "600"} }>내가 해당하는 스케줄 선택한뒤 시간 입력하기</p>
             {!selectedWeek && (
                 <div className="time-card-content-header">
-                    <p>내가 해당하는 스케줄 선택한뒤 시간 입력하기</p>
+                    
                     <button onClick={() => handleWeekSelect("week2")}>주/2</button>
                     <button onClick={() => handleWeekSelect("week4")}>주/4</button>
+                    <button onClick={() => handleWeekSelect("week2new")}>주/2(5.5시간)</button>
                 </div>
             )}
             {selectedWeek && (
@@ -112,6 +119,42 @@ function Time() {
                         </>
                     )}
                     {selectedWeek === "week2" && (
+                        <>
+                            <div className='time-card-content-input'>
+                                <input
+                                    type="text"
+                                    className='Timeinput'
+                                    placeholder='hour'
+                                    id="hour"
+                                    value={input.hour}
+                                    onChange={handleTimeChange}
+                                    required
+                                />
+                                <input
+                                    type="text"
+                                    className='Timeinput'
+                                    placeholder='minute'
+                                    id="minute"
+                                    value={input.minute}
+                                    onChange={handleTimeChange}
+                                    required
+                                />
+                            </div>
+                            <div className="time-card-content-select">
+                                {timeSettings[selectedWeek].map(({ label, hourDiff, minuteDiff }, index) => (
+                                    <button key={index} onClick={() => handle_Calculate(hourDiff, minuteDiff)}>
+                                        {label}
+                                    </button>
+                                ))}
+                            </div>
+                            <div className="time-card-content-result">
+                                <p>출근 시간</p>
+                                <span className="time">{result}</span>
+                            </div>
+                            <div className="goback-btn" onClick={handleGoBack}>뒤로 가기</div>
+                        </>
+                    )}
+                    {selectedWeek === "week2new" && (
                         <>
                             <div className='time-card-content-input'>
                                 <input

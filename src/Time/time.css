@@ -1,6 +1,5 @@
 .time-card-content-header {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 500px;
@@ -17,7 +16,7 @@
 .time-card-content-header button {
     width: 550px;
     height: 350px;
-    font-size: 5rem;
+    font-size: 4.2rem;
     font-weight: bold;
     background: #71ace8;
     padding: 20px;
