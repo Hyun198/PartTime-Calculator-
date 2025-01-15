@@ -35,16 +35,28 @@ function Bus() {
     const [hasSearched, setHasSearched] = useState(false);
     const keywordInput = useRef(null);
 
+
+    const [recent_numbers, setRecent_numbers] = useState([]);
+
+    useEffect(() => {
+        const stored_numbers = JSON.parse(localStorage.getItem("recent_numbers")) || [];
+        setRecent_numbers(stored_numbers);
+    }, [])
+
+
     const { stations, fetchBusRoute } = useBusRouteList(); // 해당 버스의 노선에 있는 모든 정류장들
     const { arrivals, fetchArrive } = useStationArrive(); // 선택한 정류장의 도착 예정 버스들
 
     const handleSearch = () => {
-        setKeyword(keywordInput.current.value);
-        setHasSearched(true);
-        if (keywordInput.current.value === "") {
+        const searchValue = keywordInput.current.value;
+        if (searchValue === "") {
             setHasSearched(false);
             return;
         }
+        setKeyword(searchValue);
+        setHasSearched(true);
+        save_recentNumber(searchValue);
+
     };
 
     const handleKeyPress = (e) => {
@@ -53,6 +65,7 @@ function Bus() {
         }
 
     }
+
 
 
     //버스 노선정보 조회
@@ -91,6 +104,26 @@ function Bus() {
         await fetchArrive(stationId);
     };
 
+    const recent_search_number = (number) => {
+        setKeyword(number);
+        keywordInput.current.value = number;
+        handleSearch();
+    }
+
+    const save_recentNumber = (number) => {
+        const updatedSearches = [number, ...recent_numbers.filter(recent_number => recent_number !== number)].slice(0, 5);
+        setRecent_numbers(updatedSearches);
+        localStorage.setItem("recent_numbers", JSON.stringify(updatedSearches));
+    }
+
+    const delete_recent_number = (event, number) => {
+        event.stopPropagation();
+        const updatedNumbers = recent_numbers.filter((item) => item !== number);
+        setRecent_numbers(updatedNumbers);
+        localStorage.setItem('recent_numbers', JSON.stringify(updatedNumbers));
+
+    };
+
     const sortedArrivals = [...arrivals].sort((a, b) => a.predictTime1 - b.predictTime1);
 
     useEffect(() => {
@@ -111,6 +144,12 @@ function Bus() {
         }
     }, [routeId]);
 
+    useEffect(() => {
+        if (recent_numbers.length > 0) {
+            localStorage.setItem("recent_numbers", JSON.stringify(recent_numbers));
+        }
+    }, [recent_numbers]);
+
 
 
     return (
@@ -124,8 +163,21 @@ function Bus() {
                     placeholder="버스 번호 입력"
                     onKeyPress={handleKeyPress}
                 />
-
                 <button onClick={handleSearch}><FontAwesomeIcon icon={faMagnifyingGlass} size="2x" /></button>
+
+                <div className="recent_busNumbers_list">
+                    {recent_numbers.map((number, index) =>
+                        <div key={index} className="recent-search-item">
+                            <div className="recent-search-btn" onClick={() => recent_search_number(number)}>
+                                {number}
+                                <div className="delete-btn" onClick={(e) => delete_recent_number(e, number)}>
+                                    X
+                                </div>
+                            </div>
+
+                        </div>
+                    )}
+                </div>
             </div>
 
 

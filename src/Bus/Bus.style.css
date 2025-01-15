@@ -40,8 +40,37 @@
     border-radius: 10px;
 }
 
+.recent_busNumbers_list {
+    display: flex;
+}
 
 
+.recent-search-btn {
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+    width: 80px;
+    padding: 15px;
+    background-color: #0056b3;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.recent-search-btn:hover {
+    background-color: #4577ae;
+}
+
+.delete-btn {
+    color: white;
+    font-size: 16px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: red;
+}
 
 .search-form button {
     margin-left: 5px;

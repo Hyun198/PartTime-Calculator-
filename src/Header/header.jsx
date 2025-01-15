@@ -52,7 +52,7 @@ function Header() {
             <div className="today">
                 <h2>{today.year}</h2>
                 <span>{today.month}월{today.day}일</span>
-                <Moment format={"HH:mm:ss"} style={{ "font-size": "28px" }}>{nowTime}</Moment>
+                <Moment format={"HH:mm:ss"} style={{ "fontSize": "28px" }}>{nowTime}</Moment>
             </div>
 
             <div className="cgv">
@@ -68,7 +68,7 @@ function Header() {
             <div className="menu-bars">
                 <ul>
                     {menu.map((item, index) => (
-                        <li id={index} onClick={() => handleGotoPage(item)}>{item}</li>
+                        <li key={index} onClick={() => handleGotoPage(item)}>{item}</li>
                     ))}
                 </ul>
             </div>
