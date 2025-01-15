@@ -57,21 +57,21 @@ function Time() {
             { label: "마감2", hourDiff: 6, minuteDiff: 50 },
         ],
         week2new: [
-            {label: "마감", hourDiff: 5, minuteDiff: 50},
-            {label: "마감2", hourDiff: 5, minuteDiff: 20},
+            { label: "마감", hourDiff: 5, minuteDiff: 50 },
+            { label: "마감2", hourDiff: 5, minuteDiff: 20 },
         ],
 
     };
 
     return (
         <>
-        <p style={{"text-align" : "center", "font-size" : "18px", "font-weight": "600"} }>내가 해당하는 스케줄 선택한뒤 시간 입력하기</p>
+            <p style={{ "text-align": "center" }}>내가 해당하는 스케줄 선택한뒤 시간 입력하기</p>
             {!selectedWeek && (
                 <div className="time-card-content-header">
-                    
+
                     <button onClick={() => handleWeekSelect("week2")}>주/2</button>
                     <button onClick={() => handleWeekSelect("week4")}>주/4</button>
-                    <button onClick={() => handleWeekSelect("week2new")}>주/2(5.5시간)</button>
+                    <button onClick={() => handleWeekSelect("week2new")}>주/2<br></br>(5.5시간)</button>
                 </div>
             )}
             {selectedWeek && (

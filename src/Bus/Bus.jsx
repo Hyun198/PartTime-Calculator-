@@ -112,6 +112,28 @@ function Bus() {
     }, [routeId]);
 
 
+    const [currentPosition, setCurrentPosition] = useState(null);
+
+
+    useEffect(() => {
+        const fetchCurrentLocation = () => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        setCurrentPosition([position.coords.latitude, position.coords.longitude]);
+                    },
+                    (error) => {
+                        console.error("Error fetching current location:", error);
+                        alert("위치 정보 사용 불가");
+                    }
+                )
+            } else {
+                alert("gps를 지원하지 않는 브라우저입니다.")
+            }
+        }
+
+        fetchCurrentLocation();
+    }, []);
 
     return (
         <Container className="bus-container">
@@ -131,15 +153,17 @@ function Bus() {
 
             <Container>
                 <Row>
-                    <MapContainer center={[37.632174, 126.707150]} zoom={15} scrollWheelZoom={false}>
+                    <MapContainer center={currentPosition || [37.632174, 126.707150]} zoom={15} scrollWheelZoom={false}>
                         <TileLayer
                             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
 
-                        <Marker position={[37.632174, 126.707150]} icon={redIcon}>
-                            <Popup>cgv 김포한강</Popup>
-                        </Marker>
+                        {currentPosition && ( // 위치가 설정된 경우에만 Marker 렌더링
+                            <Marker position={currentPosition} icon={redIcon}>
+                                <Popup>현재 위치</Popup>
+                            </Marker>
+                        )}
 
                         {/* 검색 후 정류장들 마커 표시 */}
                         {stations.map(station => (

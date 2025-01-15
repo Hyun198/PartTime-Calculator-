@@ -38,6 +38,7 @@ function Movie() {
             const url = `https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${api_key}&targetDt=${targetDt}`;
             const response = await fetch(url);
             const data = await response.json();
+            console.log(data);
             const BoxOfficeList = data.boxOfficeResult.dailyBoxOfficeList;
             if (!BoxOfficeList) {
                 throw new Error("Invalid API response");
