@@ -10,16 +10,17 @@ const useStationArrive = () => {
 
     const fetchArrive = async (stationId) => {
         try {
-            const url = `http://apis.data.go.kr/6410000/busarrivalservice/getBusArrivalList?serviceKey=${serviceKey}&stationId=${stationId}`
+            const url = `/busarrivalservice/v2/getBusArrivalList?serviceKey=${serviceKey}&stationId=${stationId}`
             const response = await axios.get(url, {
                 headers: {
-                    'Content-Type': 'text/xml; charset=utf-8'
+                    'Content-Type': 'application/json; charset=utf-8'
                 },
-                responseType: 'text'
+
             });
 
+            console.log(response.json());
 
-            const parser = new DOMParser();
+            /* const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(response.data, 'text/xml');
 
             const busArriveLists = xmlDoc.getElementsByTagName('busArrivalList')
@@ -45,7 +46,7 @@ const useStationArrive = () => {
                 });
             }
             setHasArrivals(true);
-            setArrivals(arrivalData);
+            setArrivals(arrivalData); */
         } catch (error) {
 
             console.error("버스 도착정보 에러", error);

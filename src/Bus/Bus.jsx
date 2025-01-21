@@ -27,6 +27,7 @@ const redIcon = new L.Icon({
 
 function Bus() {
     const serviceKey = process.env.REACT_APP_BUS_API_KEY;
+    const format = 'json';
 
     const [keyword, setKeyword] = useState("");
     const [routeId, setRouteId] = useState(null);
@@ -67,34 +68,24 @@ function Bus() {
     }
 
 
-
     //버스 노선정보 조회
     const SearchBusCode = async (keyword) => {
-        let url = `http://apis.data.go.kr/6410000/busrouteservice/getBusRouteList?serviceKey=${serviceKey}&keyword=${keyword}`;
+        // URL을 작성할 때 인증키와 쿼리 매개변수 포함
+        const url = `https://apis.data.go.kr/6410000/busrouteservice/v2/getBusRouteListv2?serviceKey=${encodeURIComponent(serviceKey)}&keyword=${keyword}&format=${format}`;
 
         try {
+            // API 요청 보내기
             const response = await axios.get(url, {
                 headers: {
-                    "Content-Type": "text/xml; charset=utf-8",
-                },
-                responseType: "text",
+                    'accept': 'application/json', // 응답 형식 지정
+                }
             });
 
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(response.data, "text/xml");
-            const busRouteLists = xmlDoc.getElementsByTagName("busRouteList");
-
-            for (let i = 0; i < busRouteLists.length; i++) {
-                const regionName =
-                    busRouteLists[i].getElementsByTagName("regionName")[0].textContent;
-                if (regionName.includes("김포")) {
-                    const routeId =
-                        busRouteLists[i].getElementsByTagName("routeId")[0].textContent;
-                    return routeId;
-                }
-            }
-
+            // 응답 데이터 출력
+            console.log("Bus Route Response", response.data.msgBody);
+            // JSON 데이터를 반환
         } catch (error) {
+            // 오류 발생 시 에러 메시지 출력
             console.error("Error fetching bus code:", error);
         }
     };
@@ -138,11 +129,11 @@ function Bus() {
         getBusCode();
     }, [keyword]);
 
-    useEffect(() => {
-        if (routeId) {
-            fetchBusRoute(routeId); // 검색한 버스 노선의 경유 정류장들
-        }
-    }, [routeId]);
+    /*     useEffect(() => {
+            if (routeId) {
+                fetchBusRoute(routeId); // 검색한 버스 노선의 경유 정류장들
+            }
+        }, [routeId]); */
 
     useEffect(() => {
         if (recent_numbers.length > 0) {
