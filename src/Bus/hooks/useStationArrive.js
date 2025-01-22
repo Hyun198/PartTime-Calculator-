@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 
 const serviceKey = process.env.REACT_APP_BUS_API_KEY;
-
+const format = 'json';
 const useStationArrive = () => {
 
     const [arrivals, setArrivals] = useState([]);

@@ -68,7 +68,7 @@ function Bus() {
     }
 
 
-    //버스 노선정보 조회
+    //버스 노선정보 조회  (검색한 버스 번호의)
     const SearchBusCode = async (keyword) => {
         // URL을 작성할 때 인증키와 쿼리 매개변수 포함
         const url = `https://apis.data.go.kr/6410000/busrouteservice/v2/getBusRouteListv2?serviceKey=${encodeURIComponent(serviceKey)}&keyword=${keyword}&format=${format}`;
@@ -82,8 +82,11 @@ function Bus() {
             });
 
             // 응답 데이터 출력
-            console.log("Bus Route Response", response.data.msgBody);
-            // JSON 데이터를 반환
+            console.log("Bus Route Response", response.data.response.msgBody);
+            const routeIds = response.data.response.msgBody.busRouteList.filter(route => route.adminName === "경기도 김포시");
+            return routeIds[0].routeId;
+
+
         } catch (error) {
             // 오류 발생 시 에러 메시지 출력
             console.error("Error fetching bus code:", error);
@@ -129,11 +132,11 @@ function Bus() {
         getBusCode();
     }, [keyword]);
 
-    /*     useEffect(() => {
-            if (routeId) {
-                fetchBusRoute(routeId); // 검색한 버스 노선의 경유 정류장들
-            }
-        }, [routeId]); */
+    useEffect(() => {
+        if (routeId) {
+            fetchBusRoute(routeId); // 검색한 버스 노선의 경유 정류장들
+        }
+    }, [routeId]);
 
     useEffect(() => {
         if (recent_numbers.length > 0) {
