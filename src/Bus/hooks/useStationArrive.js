@@ -10,71 +10,54 @@ const useStationArrive = () => {
 
     const fetchArrive = async (stationId) => {
         try {
-            const url = `/busarrivalservice/v2/getBusArrivalList?serviceKey=${serviceKey}&stationId=${stationId}`
+            const url = `https://apis.data.go.kr/6410000/busarrivalservice/v2/getBusArrivalListv2?serviceKey=${encodeURIComponent(serviceKey)}&stationId=${stationId}&format=${format}`;
             const response = await axios.get(url, {
                 headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-                },
-
+                    'accept': 'application/json', // 응답 형식 지정
+                }
             });
-
-            console.log(response.json());
-
-            /* const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(response.data, 'text/xml');
-
-            const busArriveLists = xmlDoc.getElementsByTagName('busArrivalList')
-            if (busArriveLists.length === 0) {
+            console.log("busArrivalList", response.data.response.msgBody.busArrivalList);
+            const busArrivalLists = response.data.response.msgBody.busArrivalList;
+            if (busArrivalLists.length === 0) {
+                setHasArrivals(false);
+                setArrivals([]);
+                return;
+            }
+            if (!busArrivalLists || busArrivalLists.length === 0) {
                 setHasArrivals(false);
                 setArrivals([]);
                 return;
             }
 
-            const arrivalData = [];
-            for (let i = 0; i < busArriveLists.length; i++) {
-                const busArrival = busArriveLists[i];
-                const routeId = busArrival.getElementsByTagName('routeId')[0].textContent;
-                const routeNumber = await fetchRouteNumber(routeId);
+            // predictTime1이 빈 문자열이 아닌 데이터만 필터링
+            const filteredArrivalLists = busArrivalLists.filter(
+                (busArrival) => busArrival.predictTime1 && busArrival.predictTime1 !== ""
+            );
 
-                arrivalData.push({
-                    stationId: busArrival.getElementsByTagName('stationId')[0].textContent,
-                    routeId,
-                    routeNumber,
-                    locationNo1: busArrival.getElementsByTagName('locationNo1')[0].textContent,
-                    predictTime1: busArrival.getElementsByTagName('predictTime1')[0].textContent,
-                    remainSeatCnt1: busArrival.getElementsByTagName('remainSeatCnt1')[0].textContent,
-                });
+            // 필터링 후 데이터가 없는 경우 처리
+            if (filteredArrivalLists.length === 0) {
+                setHasArrivals(false);
+                setArrivals([]);
+                return;
             }
-            setHasArrivals(true);
-            setArrivals(arrivalData); */
-        } catch (error) {
 
+            const arrivalData = filteredArrivalLists.map((busArrival) => ({
+                stationId: busArrival.stationId || 'Unknown',
+                routeId: busArrival.routeId || 'Unknown',
+                routeName: busArrival.routeName || 'Unknown',
+                locationNo1: busArrival.locationNo1 || 'Unknown',
+                predictTime1: busArrival.predictTime1 || 'Unknown',
+                remainSeatCnt1: busArrival.remainSeatCnt1 || 'Unknown',
+            }));
+            setHasArrivals(true);
+            setArrivals(arrivalData);
+        } catch (error) {
             console.error("버스 도착정보 에러", error);
             setHasArrivals(false);
             setArrivals([]);
         }
     }
 
-    const fetchRouteNumber = async (routeId) => {
-        try {
-            const url = `http://apis.data.go.kr/6410000/busrouteservice/getBusRouteInfoItem?serviceKey=${serviceKey}&routeId=${routeId}`;
-            const response = await axios.get(url, {
-                headers: {
-                    'Content-Type': 'text/xml; charset=utf-8'
-                },
-                responseType: 'text'
-            });
-
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(response.data, 'text/xml');
-            const routeNumber = xmlDoc.getElementsByTagName('routeName')[0].textContent;
-
-            return routeNumber;
-        } catch (error) {
-            console.error('Error fetching route number:', error);
-            return null;
-        }
-    }
 
     return { arrivals, fetchArrive };
 }

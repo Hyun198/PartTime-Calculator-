@@ -82,7 +82,7 @@ function Bus() {
             });
 
             // 응답 데이터 출력
-            console.log("Bus Route Response", response.data.response.msgBody);
+            //console.log("Bus Route Response", response.data.response.msgBody);
             const routeIds = response.data.response.msgBody.busRouteList.filter(route => route.adminName === "경기도 김포시");
             return routeIds[0].routeId;
 
@@ -212,7 +212,7 @@ function Bus() {
                                         {sortedArrivals?.map((arrival, index) => (
                                             <Card className="arrival-card" key={index}>
                                                 <Card.Body>
-                                                    <Card.Title style={{ color: arrival.predictTime1 <= 5 ? "red" : "black" }}>{arrival.routeNumber} 번</Card.Title>
+                                                    <Card.Title style={{ color: arrival.predictTime1 <= 5 ? "red" : "black" }}>{arrival.routeName} 번</Card.Title>
                                                     <Card.Text>
                                                         <strong>버스 위치:</strong> {arrival.locationNo1} 정거장 전
                                                     </Card.Text>
@@ -221,7 +221,11 @@ function Bus() {
                                                     </Card.Text>
                                                     <Card.Text>
                                                         <strong>남은 좌석 수:</strong>{" "}
-                                                        {arrival.remainSeatCnt1 === "-1" ? "없음" : arrival.remainSeatCnt1}
+                                                        {arrival.remainSeatCnt1 === "Unknown"
+                                                            ? "알 수 없음"
+                                                            : arrival.remainSeatCnt1 === -1
+                                                                ? "좌석 없음"
+                                                                : arrival.remainSeatCnt1}
                                                     </Card.Text>
                                                 </Card.Body>
                                             </Card>
