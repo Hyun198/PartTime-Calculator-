@@ -8,6 +8,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 
+import useBusinfo from "./hooks/useBusinfo";
 import useBusRouteList from "./hooks/useBusRouteList";
 import useStationArrive from "./hooks/useStationArrive";
 
@@ -27,6 +28,7 @@ const redIcon = new L.Icon({
 
 function Bus() {
     const serviceKey = process.env.REACT_APP_BUS_API_KEY;
+    const format = 'json';
 
     const [keyword, setKeyword] = useState("");
     const [routeId, setRouteId] = useState(null);
@@ -46,6 +48,7 @@ function Bus() {
 
     const { stations, fetchBusRoute } = useBusRouteList(); // 해당 버스의 노선에 있는 모든 정류장들
     const { arrivals, fetchArrive } = useStationArrive(); // 선택한 정류장의 도착 예정 버스들
+    const { fetchBusInfo } = useBusinfo();     //버스 노선정보 조회 
 
     const handleSearch = () => {
         const searchValue = keywordInput.current.value;
@@ -65,39 +68,6 @@ function Bus() {
         }
 
     }
-
-
-
-    //버스 노선정보 조회
-    const SearchBusCode = async (keyword) => {
-        let url = `http://apis.data.go.kr/6410000/busrouteservice/getBusRouteList?serviceKey=${serviceKey}&keyword=${keyword}`;
-
-        try {
-            const response = await axios.get(url, {
-                headers: {
-                    "Content-Type": "text/xml; charset=utf-8",
-                },
-                responseType: "text",
-            });
-
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(response.data, "text/xml");
-            const busRouteLists = xmlDoc.getElementsByTagName("busRouteList");
-
-            for (let i = 0; i < busRouteLists.length; i++) {
-                const regionName =
-                    busRouteLists[i].getElementsByTagName("regionName")[0].textContent;
-                if (regionName.includes("김포")) {
-                    const routeId =
-                        busRouteLists[i].getElementsByTagName("routeId")[0].textContent;
-                    return routeId;
-                }
-            }
-
-        } catch (error) {
-            console.error("Error fetching bus code:", error);
-        }
-    };
 
     const handleStationClick = async (stationId, stationName) => {
         setSelectedStation({ stationId, stationName });
@@ -129,7 +99,7 @@ function Bus() {
     useEffect(() => {
         const getBusCode = async () => {
             if (keyword) {
-                const routeId = await SearchBusCode(keyword);
+                const routeId = await fetchBusInfo(keyword);
                 if (routeId) {
                     setRouteId(routeId);
                 }
@@ -218,16 +188,28 @@ function Bus() {
                                         {sortedArrivals?.map((arrival, index) => (
                                             <Card className="arrival-card" key={index}>
                                                 <Card.Body>
-                                                    <Card.Title style={{ color: arrival.predictTime1 <= 5 ? "red" : "black" }}>{arrival.routeNumber} 번</Card.Title>
+                                                    <Card.Title style={{ color: arrival.predictTime1 <= 5 ? "red" : "black" }}>{arrival.routeName} 번</Card.Title>
                                                     <Card.Text>
                                                         <strong>버스 위치:</strong> {arrival.locationNo1} 정거장 전
                                                     </Card.Text>
                                                     <Card.Text style={{ color: arrival.predictTime1 <= 5 ? "red" : "black" }}>
                                                         <strong>도착 예정시간:</strong> {arrival.predictTime1}분 후
                                                     </Card.Text>
-                                                    <Card.Text>
+                                                    <Card.Text
+                                                        className={
+                                                            arrival.remainSeatCnt1 === "Unknown"
+                                                                ? "unknown-seat"
+                                                                : arrival.remainSeatCnt1 === -1
+                                                                    ? "no-seat"
+                                                                    : ""
+                                                        }
+                                                    >
                                                         <strong>남은 좌석 수:</strong>{" "}
-                                                        {arrival.remainSeatCnt1 === "-1" ? "없음" : arrival.remainSeatCnt1}
+                                                        {arrival.remainSeatCnt1 === "Unknown"
+                                                            ? "알 수 없음"
+                                                            : arrival.remainSeatCnt1 === -1
+                                                                ? "좌석 없음"
+                                                                : arrival.remainSeatCnt1}
                                                     </Card.Text>
                                                 </Card.Body>
                                             </Card>
