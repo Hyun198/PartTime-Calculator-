@@ -8,6 +8,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 
+import useBusinfo from "./hooks/useBusinfo";
 import useBusRouteList from "./hooks/useBusRouteList";
 import useStationArrive from "./hooks/useStationArrive";
 
@@ -47,6 +48,7 @@ function Bus() {
 
     const { stations, fetchBusRoute } = useBusRouteList(); // 해당 버스의 노선에 있는 모든 정류장들
     const { arrivals, fetchArrive } = useStationArrive(); // 선택한 정류장의 도착 예정 버스들
+    const { fetchBusInfo } = useBusinfo();     //버스 노선정보 조회 
 
     const handleSearch = () => {
         const searchValue = keywordInput.current.value;
@@ -66,32 +68,6 @@ function Bus() {
         }
 
     }
-
-
-    //버스 노선정보 조회  (검색한 버스 번호의)
-    const SearchBusCode = async (keyword) => {
-        // URL을 작성할 때 인증키와 쿼리 매개변수 포함
-        const url = `https://apis.data.go.kr/6410000/busrouteservice/v2/getBusRouteListv2?serviceKey=${encodeURIComponent(serviceKey)}&keyword=${keyword}&format=${format}`;
-
-        try {
-            // API 요청 보내기
-            const response = await axios.get(url, {
-                headers: {
-                    'accept': 'application/json', // 응답 형식 지정
-                }
-            });
-
-            // 응답 데이터 출력
-            //console.log("Bus Route Response", response.data.response.msgBody);
-            const routeIds = response.data.response.msgBody.busRouteList.filter(route => route.adminName === "경기도 김포시");
-            return routeIds[0].routeId;
-
-
-        } catch (error) {
-            // 오류 발생 시 에러 메시지 출력
-            console.error("Error fetching bus code:", error);
-        }
-    };
 
     const handleStationClick = async (stationId, stationName) => {
         setSelectedStation({ stationId, stationName });
@@ -123,7 +99,7 @@ function Bus() {
     useEffect(() => {
         const getBusCode = async () => {
             if (keyword) {
-                const routeId = await SearchBusCode(keyword);
+                const routeId = await fetchBusInfo(keyword);
                 if (routeId) {
                     setRouteId(routeId);
                 }
@@ -219,7 +195,15 @@ function Bus() {
                                                     <Card.Text style={{ color: arrival.predictTime1 <= 5 ? "red" : "black" }}>
                                                         <strong>도착 예정시간:</strong> {arrival.predictTime1}분 후
                                                     </Card.Text>
-                                                    <Card.Text>
+                                                    <Card.Text
+                                                        className={
+                                                            arrival.remainSeatCnt1 === "Unknown"
+                                                                ? "unknown-seat"
+                                                                : arrival.remainSeatCnt1 === -1
+                                                                    ? "no-seat"
+                                                                    : ""
+                                                        }
+                                                    >
                                                         <strong>남은 좌석 수:</strong>{" "}
                                                         {arrival.remainSeatCnt1 === "Unknown"
                                                             ? "알 수 없음"

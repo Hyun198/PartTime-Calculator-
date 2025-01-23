@@ -16,7 +16,6 @@ const useStationArrive = () => {
                     'accept': 'application/json', // 응답 형식 지정
                 }
             });
-            console.log("busArrivalList", response.data.response.msgBody.busArrivalList);
             const busArrivalLists = response.data.response.msgBody.busArrivalList;
             if (busArrivalLists.length === 0) {
                 setHasArrivals(false);
@@ -42,10 +41,8 @@ const useStationArrive = () => {
             }
 
             const arrivalData = filteredArrivalLists.map((busArrival) => ({
-                stationId: busArrival.stationId || 'Unknown',
                 routeId: busArrival.routeId || 'Unknown',
                 routeName: busArrival.routeName || 'Unknown',
-                locationNo1: busArrival.locationNo1 || 'Unknown',
                 predictTime1: busArrival.predictTime1 || 'Unknown',
                 remainSeatCnt1: busArrival.remainSeatCnt1 || 'Unknown',
             }));

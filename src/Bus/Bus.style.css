@@ -171,3 +171,11 @@
     font-size: 25px;
     font-weight: 700;
 }
+
+.unknown-seat {
+    color: blue;
+}
+
+.no-seat {
+    color: red;
+}
