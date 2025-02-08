@@ -7,6 +7,9 @@ function Time() {
     const [input, setInput] = useState({ hour: "", minute: "" });
     const [result, setResult] = useState("");
 
+    const [isOpen, setIsOpen] = useState(false);
+
+
     const handleWeekSelect = (week) => {
         setSelectedWeek(week);
         setInput({ hour: "", minute: "" });
@@ -36,7 +39,7 @@ function Time() {
 
     const handle_Calculate = (hourDiff, minuteDiff) => {
         if (!input.hour || !input.minute) {
-            alert("올바른 시간을 입력해주세요");
+            alert("24시간 형태로 HH:mm 형태로 입력해주세요");
             return;
         }
         setResult(Calculate_END_Time(input.hour, input.minute, hourDiff, minuteDiff));
@@ -65,7 +68,21 @@ function Time() {
 
     return (
         <>
-            <p style={{ "text-align": "center" }}>내가 해당하는 스케줄 선택한뒤 시간 입력하기</p>
+            <div className="time-header">
+                📌 출근 시간 계산 방법
+                <button
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="more-btn"
+                >
+                    {isOpen ? "접기" : "자세히 보기"}
+                </button>
+
+                {isOpen && (
+                    <p className="mt-2 text-gray-700">
+                        마지막 영화 시간을 입력하고 <br></br>원하는 <strong>마감 버튼</strong>을 누르면 출근 시간이 계산됩니다.
+                    </p>
+                )}
+            </div>
             {!selectedWeek && (
                 <div className="time-card-content-header">
 
