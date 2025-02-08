@@ -80,6 +80,7 @@ function Time() {
                 {isOpen && (
                     <p className="mt-2 text-gray-700">
                         마지막 영화 시간을 입력하고 <br></br>원하는 <strong>마감 버튼</strong>을 누르면 출근 시간이 계산됩니다.
+                        <p>영화시간 확인은 CGV로고 클릭해서 홈페이지에서 확인</p>
                     </p>
                 )}
             </div>
