@@ -43,10 +43,9 @@
     <li>출근에 도움이 될 수 있는 실시간 버스 도착 정보 조회 기능 추가 (24.10.03)Open StreetMap API를 이용해서 맵에 정류장 좌표를 표시</li>
     <li>버스 검색 기능에서 최근 검색한 내역 표시 기능 추가 (25.01.15)</li>
     <li>경기도 버스 노선 조회 api 포멧 변경에 따른 업데이트 (xml-> json)</li>
-  
+    <li>메인 페이지에 사용법 설명 추가(사용자 요청)</li>
   </ul>
-  
-  <strong>웹 애플리케이션을 실행만 시키면 입력 란에 시간을 입력하지도 않아도 CGV홈페이지에서 금일 마지막 영화시간을 크롤링하여 자동으로 계산해주도록 개선</strong>
+
 
 ## :sparkles: structure
 
@@ -58,7 +57,7 @@
 
 <div align="center"> 
   <img src="./relative/cgvapp.png" alt="screenshot" />
-
+  <img src="./relative/사용설명 추가.png" alt="screenshot2" />
 </div>
 
 <!-- TechStack -->
