@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 
 const serviceKey = process.env.REACT_APP_BUS_API_KEY;
@@ -17,6 +17,7 @@ const useStationArrive = () => {
                 }
             });
             const busArrivalLists = response.data.response.msgBody.busArrivalList;
+
             if (busArrivalLists.length === 0) {
                 setHasArrivals(false);
                 setArrivals([]);
@@ -42,6 +43,7 @@ const useStationArrive = () => {
 
             const arrivalData = filteredArrivalLists.map((busArrival) => ({
                 routeId: busArrival.routeId || 'Unknown',
+                locationNo1: busArrival.locationNo1 || 'Unknown',
                 routeName: busArrival.routeName || 'Unknown',
                 predictTime1: busArrival.predictTime1 || 'Unknown',
                 remainSeatCnt1: busArrival.remainSeatCnt1 || 'Unknown',

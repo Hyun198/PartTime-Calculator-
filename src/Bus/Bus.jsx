@@ -27,8 +27,6 @@ const redIcon = new L.Icon({
 });
 
 function Bus() {
-    const serviceKey = process.env.REACT_APP_BUS_API_KEY;
-    const format = 'json';
 
     const [keyword, setKeyword] = useState("");
     const [routeId, setRouteId] = useState(null);
@@ -95,7 +93,6 @@ function Bus() {
     };
 
     const sortedArrivals = [...arrivals].sort((a, b) => a.predictTime1 - b.predictTime1);
-
     useEffect(() => {
         const getBusCode = async () => {
             if (keyword) {
