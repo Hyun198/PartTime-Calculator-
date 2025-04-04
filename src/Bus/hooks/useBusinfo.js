@@ -14,7 +14,7 @@ const useBusInfo = () => {
                     accept: "application/json",
                 },
             });
-
+            console.log(response);
             const routeIds = response.data.response.msgBody.busRouteList.filter(
                 (route) => route.adminName === "경기도 김포시"
             );

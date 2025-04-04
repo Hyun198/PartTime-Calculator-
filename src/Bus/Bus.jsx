@@ -27,9 +27,7 @@ const redIcon = new L.Icon({
 });
 
 function Bus() {
-    const serviceKey = process.env.REACT_APP_BUS_API_KEY;
-    const format = 'json';
-
+    const [userPosition, setUserPosition] = useState(null);
     const [keyword, setKeyword] = useState("");
     const [routeId, setRouteId] = useState(null);
 
@@ -120,7 +118,16 @@ function Bus() {
         }
     }, [recent_numbers]);
 
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition((position) => {
+            setUserPosition({
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            });
+        });
 
+    }, []);
+    console.log(userPosition);
 
     return (
         <Container className="bus-container">
@@ -153,17 +160,17 @@ function Bus() {
 
             <Container>
                 <Row>
-                    <MapContainer center={[37.632174, 126.707150]} zoom={15} scrollWheelZoom={false}>
+                    <MapContainer center={userPosition ? [userPosition.lat, userPosition.lng] : [37.632174, 126.707150]} zoom={15} scrollWheelZoom={false}>
                         <TileLayer
                             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
 
-                        <Marker position={[37.632174, 126.707150]} icon={redIcon}>
-                            <Popup>cgv 김포한강</Popup>
+                        <Marker position={userPosition ? [userPosition.lat, userPosition.lng] : [37.632174, 126.707150]} icon={redIcon}>
+
                         </Marker>
 
-                        {/* 검색 후 정류장들 마커 표시 */}
+
                         {stations.map(station => (
                             <Marker key={station.id} position={station.position}>
                                 <Popup>

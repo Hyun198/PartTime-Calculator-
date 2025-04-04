@@ -1,15 +1,13 @@
 .time-card-content-header {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
     height: 500px;
     margin: auto;
-    padding: 10px;
-    border-radius: 10px;
+    gap: 15px;
 }
 
 .time-card-content-header p {
-    font-weight: 600;
+    font-weight: 800;
     font-size: 18px;
 }
 
@@ -19,7 +17,6 @@
     font-size: 3rem;
     background: #71ace8;
     padding: 20px;
-    text-align: center;
     color: #fff;
     border: none;
     border-radius: 5px;
