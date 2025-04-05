@@ -1,9 +1,12 @@
 import Header from './Header/header'
 import Time from './Time/Time'
 import Movie from './Movie/Movie'
+import Navbar from './Navbar/Navbar';
+
 import './App.css';
 import Bus from './Bus/Bus';
 import { Routes, Route } from 'react-router-dom';
+
 function App() {
 
 
@@ -16,6 +19,7 @@ function App() {
         <Route path="/boxoffice" element={<Movie />} />
         <Route path="/bus" element={<Bus />} />
       </Routes>
+      <Navbar />
     </>
   );
 }

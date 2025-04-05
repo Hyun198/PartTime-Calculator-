@@ -24,10 +24,8 @@
 
 .time-card-content-header {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
     height: 500px;
-    margin: auto;
     border-radius: 10px;
     gap: 10px;
 }
