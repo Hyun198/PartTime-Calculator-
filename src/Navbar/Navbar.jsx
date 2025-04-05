@@ -1,11 +1,17 @@
 import React from 'react'
 import './Navbar.style.css'
-import { useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faX, faHouse } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate, useLocation } from 'react-router-dom';
+
 
 const Navbar = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const hideOnPaths = ['/bus'];
+    if (hideOnPaths.includes(location.pathname)) {
+        return null;
+    }
+
     const menu = [
         "home",
         "bus",

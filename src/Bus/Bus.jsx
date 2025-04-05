@@ -213,7 +213,7 @@ function Bus() {
                                         ))}
                                     </div>
                                 ) : (
-                                    <p style={{ fontSize: "30px", textAlign: "center" }}>도착 정보를 알고 싶은 정류장 먼저 선택 😢</p>
+                                    <p style={{ fontSize: "18px", textAlign: "center" }}>도착 정보를 알고 싶은 정류장 먼저 선택 😢</p>
                                 )}
                             </div>
                         </Col>
