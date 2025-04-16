@@ -1,49 +1,40 @@
-import React from 'react'
-import './Navbar.style.css'
-import { useNavigate, useLocation } from 'react-router-dom';
+import React from 'react';
+import './Navbar.style.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouse, faBus, faTicket, faX } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
-
-const Navbar = () => {
+const Navbar = ({ isOpen, onClose }) => {
     const navigate = useNavigate();
-    const location = useLocation();
-
-    const hideOnPaths = ['/bus'];
-    if (hideOnPaths.includes(location.pathname)) {
-        return null;
-    }
-
     const menu = [
-        "home",
-        "bus",
-        "boxoffice",
-    ]
+        { name: 'home', icon: faHouse },
+        { name: 'bus', icon: faBus },
+        { name: 'boxoffice', icon: faTicket },
+    ];
 
-    const handleGotoPage = (param) => {
-        if (param === "home") {
-            navigate("/")
-        } else {
-            navigate(`/${param}`)
-        }
-    }
+    const handleGotoPage = (path) => {
+        onClose(); // 사이드바 닫기
+        path === 'home' ? navigate('/') : navigate(`/${path}`);
+    };
 
     return (
-        <div className="bottom-nav" >
-            {
-                menu.map((item, index) => {
-                    return (
-                        <div key={index} className="nav-item" onClick={() => handleGotoPage(item)}>
+        <>
+            <div className={`sidebar ${isOpen ? 'open' : ''}`}>
+                <div className="sidebar-header">
+                    <FontAwesomeIcon icon={faX} onClick={onClose} />
+                </div>
+                <ul className="sidebar-menu">
+                    {menu.map((item, idx) => (
+                        <li key={idx} onClick={() => handleGotoPage(item.name)}>
+                            <FontAwesomeIcon icon={item.icon} />
+                            <span>{item.name}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            {isOpen && <div className="overlay" onClick={onClose}></div>}
+        </>
+    );
+};
 
-                            <div>{item}</div>
-                        </div>
-                    )
-
-                })
-            }
-
-        </div>
-
-    )
-
-}
-
-export default Navbar
+export default Navbar;

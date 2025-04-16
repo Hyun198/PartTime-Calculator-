@@ -3,8 +3,9 @@ import Moment from 'react-moment';
 import cgv_logo from "../assets/cgv.png";
 import useInterval from 'use-interval';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse } from '@fortawesome/free-solid-svg-icons'
+import { faHouse, faBars } from '@fortawesome/free-solid-svg-icons'
 import './header.css'
+import Navbar from '../Navbar/Navbar';
 
 
 export const daytime = () => {
@@ -19,6 +20,7 @@ export const daytime = () => {
 function Header() {
 
     let [nowTime, setNowTime] = useState(Date.now());
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const today = daytime();
     let today_date = `${today.year}${today.month}${today.day}`
@@ -32,9 +34,9 @@ function Header() {
 
         <div className="header-container" >
             <div className="today">
-                <h2>{today.year}</h2>
+                <span>{today.year}</span>
                 <span>{today.month}월{today.day}일</span>
-                <Moment format={"HH:mm:ss"} style={{ "fontSize": "28px" }}>{nowTime}</Moment>
+                <Moment format={"HH:mm"} style={{ "fontSize": "28px" }}>{nowTime}</Moment>
             </div>
 
             <div className="cgv">
@@ -43,11 +45,16 @@ function Header() {
                 </a>
             </div>
 
-            <div className="home-btn">
-                <a href="/"><FontAwesomeIcon icon={faHouse} /></a>
+            <div className="hamburger-btn" onClick={() => setIsSidebarOpen(true)}>
+                <FontAwesomeIcon icon={faBars} />
             </div>
 
+            {/* <div className="home-btn">
+                <a href="/"><FontAwesomeIcon icon={faHouse} /></a>
+            </div> */}
 
+
+            <Navbar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
         </div>
 

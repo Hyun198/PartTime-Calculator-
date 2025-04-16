@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import axios from "axios";
 import './Bus.style.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
