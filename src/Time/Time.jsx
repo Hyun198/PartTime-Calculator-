@@ -53,11 +53,11 @@ function Time() {
     const timeSettings = {
         week5: [
             /* { label: "마감", hourDiff: 6, minuteDiff: 50 }, */
-            { label: "마감2", hourDiff: 6, minuteDiff: 20 },
+            { label: "마감", hourDiff: 7, minuteDiff: 20 },
         ],
         week2: [
             /* { label: "마감", hourDiff: 5, minuteDiff: 50 }, */
-            { label: "마감2", hourDiff: 5, minuteDiff: 20 },
+            { label: "마감", hourDiff: 6, minuteDiff: 20 },
         ],
 
     };
